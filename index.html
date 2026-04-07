@@ -679,7 +679,7 @@
       client_reference_id: state.pkg + '_' + state.date + '_' + state.time,
       return_url: returnUrl
     });
-    window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
+    window.location.href = stripeLinks[state.pkg];
   });
 
   // Init
