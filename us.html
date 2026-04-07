@@ -423,27 +423,27 @@
     </div>
     <button class="btn-back" id="backTo2">← Back</button>
     <p class="step-label">Step 3 of 4</p>
-    <h2 class="step-title">Morning or evening?</h2>
-    <p class="step-sub">Both are shot in natural light — exact timing confirmed 48 hrs before your session.</p>
+    <h2 class="step-title">morning or evening?</h2>
+    <p class="step-sub">both are shot in natural light — exact timing confirmed 48 hrs before your session.</p>
     <div class="time-grid">
       <div class="time-card" data-time="morning">
         <div class="check">✓</div>
         <div class="time-img-wrap">
           <img src="YOUR_MORNING_IMAGE_URL" alt="Morning session" onerror="this.style.display='none'" />
         </div>
-        <div class="time-name">Morning</div>
-        <div class="time-desc">Soft golden light just after sunrise</div>
+        <div class="time-name">morning</div>
+        <div class="time-desc">soft golden light just after sunrise</div>
       </div>
       <div class="time-card" data-time="evening">
         <div class="check">✓</div>
         <div class="time-img-wrap">
           <img src="YOUR_EVENING_IMAGE_URL" alt="Evening session" onerror="this.style.display='none'" />
         </div>
-        <div class="time-name">Evening</div>
-        <div class="time-desc">Warm golden hour into blue hour</div>
+        <div class="time-name">evening</div>
+        <div class="time-desc">warm golden hour into blue hour</div>
       </div>
     </div>
-    <p class="error-msg" id="err3">Please choose a time of day to continue.</p>
+    <p class="error-msg" id="err3">please choose a time of day to continue.</p>
     <button class="btn-primary" id="toStep4">Continue →</button>
   </div>
 
@@ -659,20 +659,16 @@
   // 🔧 Replace each placeholder with your real Stripe Payment Link URL
   // Go to dashboard.stripe.com → Payment Links → + Create → set price to deposit amount
   document.getElementById('payBtn').addEventListener('click', function() {
-    var stripeLinks = {
-      couples:  'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00',
-      families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
-      events:   'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00'
-    };
-    var email = document.getElementById('email').value.trim();
-    var returnUrl = window.location.origin + window.location.pathname + '?success=true';
-    var params = new URLSearchParams({
-      prefilled_email: email,
-      client_reference_id: state.pkg + '_' + state.date + '_' + state.time,
-      return_url: returnUrl
-    });
-    window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
-  });
+  var stripeLinks = {
+    couples:  'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00',
+    families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
+    events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02',
+    weddings: 'https://buy.stripe.com/YOUR_WEDDINGS_LINK'
+  };
+
+  console.log(state.pkg);
+  window.location.href = stripeLinks[state.pkg];
+});
 
   // Init
   var urlParams = new URLSearchParams(window.location.search);
