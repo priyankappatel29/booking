@@ -4,17 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Book a Session — Priyanka Patel Photography</title>
-<!-- US BOOKING PAGE -->
 <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --navy: #1d2735;
-    --cream: #fff9f1;
-    --cream-dark: #f0e8da;
-    --gold: #c9a96e;
+    --navy:       #1d2735;
+    --cream:      #fdece0;
+    --cream-dim:  rgba(253,236,224,0.7);
+    --cream-dark: #e8d5c0;
+    --gold:       #c9a96e;
     --gold-light: #e8d5b0;
-    --muted: #8a99aa;
-    --card-muted: #6b7a8d;
+    --card-bg:    #243345;
+    --card-border:rgba(253,236,224,0.09);
+    --muted:      rgba(253,236,224,0.5);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,334 +25,485 @@
     background: var(--navy);
     color: var(--cream);
     font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 300;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
   /* HEADER */
   header {
-    background: var(--navy);
-    border-bottom: 1px solid rgba(201,169,110,0.2);
-    padding: 2.5rem 2rem 2rem;
     text-align: center;
+    padding: 56px 24px 44px;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
   }
   header::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 60% 0%, rgba(201,169,110,0.08) 0%, transparent 60%);
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 0%, rgba(201,169,110,0.07) 0%, transparent 65%);
     pointer-events: none;
   }
   .header-eyebrow {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    font-size: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
     opacity: 0;
-    animation: fadeUp 0.8s 0.1s forwards;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s forwards;
   }
   .header-logo {
     display: block;
-    width: min(520px, 80vw);
-    margin: 0 auto;
+    width: min(480px, 78vw);
+    margin: 0 auto 20px;
     opacity: 0;
-    animation: fadeUp 0.8s 0.25s forwards;
+    animation: fadeUp 0.7s 0.25s forwards;
   }
   .tagline {
+    font-size: 13px;
+    text-transform: uppercase;
     font-family: 'Playfair Display', serif;
+    font-weight: 300;
     font-style: italic;
-    font-size: 1rem;
     color: var(--gold-light);
-    margin-top: 0.5rem;
     opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
+    animation: fadeUp 0.7s 0.4s forwards;
   }
   .header-rule {
-    width: 40px; height: 1px;
+    width: 32px; height: 1px;
     background: var(--gold);
-    margin: 1.25rem auto 0;
+    margin: 18px auto 0;
     opacity: 0;
-    animation: fadeUp 0.8s 0.55s forwards;
+    animation: fadeUp 0.7s 0.5s forwards;
   }
 
   /* LAYOUT */
-  main { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  main { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
 
   /* STEPS */
   .step { display: none; }
   .step.active { display: block; animation: fadeUp 0.4s forwards; }
 
   .step-label {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
+    font-size: 12px;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.6;
+    margin-bottom: 10px;
   }
   .step-title {
     font-family: 'League Gothic', sans-serif;
-    font-size: clamp(2rem, 6vw, 3rem);
+    font-size: clamp(44px, 8vw, 60px);
     font-weight: 400;
-    letter-spacing: 0.06em;
-    line-height: 1.1;
+    line-height: 1;
     text-transform: uppercase;
-    margin-bottom: 0.4rem;
     color: var(--cream);
+    margin-bottom: 12px;
   }
   .step-sub {
+    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
     font-style: italic;
-    color: var(--gold-light);
-    font-size: 1rem;
-    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.75;
+    margin-bottom: 36px;
   }
 
   /* PROGRESS */
-  .progress-bar { display: flex; gap: 0.4rem; margin-bottom: 2.5rem; }
-  .progress-seg { height: 2px; flex: 1; background: rgba(255,249,241,0.12); transition: background 0.4s; }
+  .progress-bar { display: flex; gap: 6px; margin-bottom: 40px; }
+  .progress-seg { height: 1px; flex: 1; background: rgba(253,236,224,0.12); transition: background 0.4s; }
   .progress-seg.done { background: var(--gold); }
   .progress-seg.active { background: var(--cream); }
 
   /* PACKAGE CARDS */
-  .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 540px) { .package-grid { grid-template-columns: 1fr; } }
 
   .package-card {
-    border: 1px solid rgba(255,249,241,0.1);
-    background: var(--cream);
-    padding: 1.75rem 1.5rem;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    padding: 24px 20px;
     cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     overflow: hidden;
   }
   .package-card::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
     pointer-events: none;
   }
-  .package-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .package-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
   .package-card:hover::after, .package-card.selected::after { transform: scaleX(1); }
-  .package-card.selected { border-color: var(--gold); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .package-card.selected { border-color: var(--gold); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
   .package-card .check {
-    position: absolute; top: 1rem; right: 1rem;
-    width: 20px; height: 20px;
-    border: 1.5px solid var(--cream-dark); border-radius: 50%;
+    position: absolute; top: 16px; right: 16px;
+    width: 18px; height: 18px;
+    border: 1px solid rgba(253,236,224,0.2); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; font-size: 0.65rem; color: transparent;
-    pointer-events: none;
+    font-size: 0.6rem; color: transparent;
+    transition: all 0.2s; pointer-events: none;
   }
-  .package-card.selected .check { background: var(--navy); border-color: var(--navy); color: var(--cream); }
+  .package-card.selected .check { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
   .pkg-name {
     font-family: 'League Gothic', sans-serif;
-    font-size: 2rem;
-    text-transform: uppercase; color: var(--navy);
+    font-size: 38px;
+    text-transform: uppercase;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 6px;
   }
   .pkg-desc {
-    font-family: 'Playfair Display', serif; font-style: italic;
-    font-size: 0.9rem; color: var(--card-muted); line-height: 1.4; margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.6;
+    line-height: 1.5;
+    margin-bottom: 16px;
   }
-  .pkg-price { font-size: 1.5rem; font-weight: 300; color: var(--navy); }
-  .pkg-price span {
-    font-size: 0.75rem; font-family: 'Playfair Display', sans-serif; color: var(--card-muted); text-transform: uppercase;
+  .pkg-price {
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.9;
   }
-  .pkg-deposit { font-size: 0.8rem; color: var(--gold); margin-top: 0.25rem; font-style: italic; }
+  .pkg-deposit {
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 4px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
   .pkg-duration {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.6rem;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--card-muted); margin-top: 0.5rem;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.4;
+    margin-top: 10px;
   }
 
   /* TIME CARDS */
-  .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
   .time-card {
-    border: 1px solid rgba(255,249,241,0.1);
-    background: var(--cream); padding: 2rem 1.5rem;
-    cursor: pointer; text-align: center; transition: all 0.2s; position: relative; overflow: hidden;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
   }
   .time-card::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
     pointer-events: none;
   }
-  .time-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .time-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
   .time-card:hover::after, .time-card.selected::after { transform: scaleX(1); }
-  .time-card.selected { border-color: var(--gold); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .time-card.selected { border-color: var(--gold); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
   .time-card .check {
-    position: absolute; top: 1rem; right: 1rem;
-    width: 20px; height: 20px;
-    border: 1.5px solid var(--cream-dark); border-radius: 50%;
+    position: absolute; top: 12px; right: 12px;
+    width: 18px; height: 18px;
+    border: 1px solid rgba(253,236,224,0.2); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; font-size: 0.65rem; color: transparent;
-    pointer-events: none;
+    font-size: 0.6rem; color: transparent;
+    transition: all 0.2s; pointer-events: none;
   }
-  .time-card.selected .check { background: var(--navy); border-color: var(--navy); color: var(--cream); }
-  .time-img-wrap {
-    width: 100%; aspect-ratio: 4/3; overflow: hidden; margin-bottom: 1rem;
-    background: var(--cream-dark);
-  }
-  .time-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .time-card.selected .check { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .time-img-wrap { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #1a2232; }
+  .time-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .time-card:hover .time-img-wrap img { transform: scale(1.03); }
+  .time-text { padding: 16px 16px 20px; }
   .time-name {
-    font-family: 'League Gothic', sans-serif; font-size: 1.4rem;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 4px;
   }
-  .time-desc { font-style: italic; font-size: 0.85rem; color: var(--card-muted); }
+  .time-desc {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.55;
+  }
   .time-note {
-    background: rgba(201,169,110,0.08); border-left: 2px solid var(--gold);
-    padding: 0.85rem 1.1rem; font-style: italic; font-size: 0.9rem; color: var(--gold-light); margin-top: 0.5rem;
+    border-left: 1px solid var(--gold);
+    padding: 10px 14px;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.65;
+    margin-top: 8px;
   }
 
   /* CALENDAR */
   .calendar-wrap {
-    background: var(--cream); border: 1px solid rgba(255,249,241,0.1);
-    padding: 1.5rem; margin-bottom: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    margin-bottom: 24px;
   }
-  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
   .cal-month {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.75rem;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy);
+    font-size: 36px;
+    text-transform: uppercase;
+    justify-align: center;
+    font-family: 'League Gothic', sans serif;
+    font-weight: 300;
+    color: var(--cream);
   }
   .cal-nav {
-    background: none; border: 1px solid var(--cream-dark);
-    width: 32px; height: 32px; cursor: pointer; font-size: 0.9rem; color: var(--navy);
-    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+    background: none;
+    border: 1px solid var(--card-border);
+    width: 30px; height: 30px;
+    cursor: pointer; font-size: 1rem;
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; opacity: 0.6;
   }
-  .cal-nav:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .cal-nav:hover { border-color: var(--gold); color: var(--gold); opacity: 1; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
   .cal-dow {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.55rem;
-    letter-spacing: 0.15em; text-transform: uppercase; color: var(--card-muted);
-    text-align: center; padding: 0.4rem 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'League Gothic', sans serif;
+    font-weight: 300;
+    color: var(--cream);
+    text-align: center;
+    padding: 6px 0;
   }
   .cal-day {
-    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem; font-family: 'Playfair Display', serif;
-    cursor: pointer; transition: all 0.15s; border: 1px solid transparent; color: var(--navy);
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-family: 'League Gothic', sans serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    color: var(--cream);
+    opacity: 0.8;
   }
-  .cal-day:hover:not(.past) { background: var(--cream-dark); }
-  .cal-day.selected { background: var(--navy); color: var(--cream); }
-  .cal-day.today { border-color: var(--gold); }
-  .cal-day.past { color: var(--cream-dark); cursor: default; pointer-events: none; }
+  .cal-day:hover:not(.past) { background: rgba(253,236,224,0.07); opacity: 1; }
+  .cal-day.selected { background: var(--gold); color: var(--navy); opacity: 1; font-weight: 500; border-color: var(--gold); }
+  .cal-day.today { border-color: rgba(201,169,110,0.5); opacity: 1; }
+  .cal-day.past { opacity: 0.18; cursor: default; pointer-events: none; }
   .cal-day.empty { pointer-events: none; }
 
   /* FORM */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
   @media (max-width: 480px) { .form-grid { grid-template-columns: 1fr; } }
-  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
   .form-field.full { grid-column: 1 / -1; }
   label {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.6rem;
-    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.5;
   }
   input, textarea {
-    background: white; border: 1px solid var(--cream-dark);
-    padding: 0.75rem 0.9rem; font-family: 'Playfair Display', serif;
-    font-size: 1rem; color: var(--navy); outline: none; transition: border-color 0.2s; width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 12px 14px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
   }
+  input::placeholder, textarea::placeholder { opacity: 0.3; color: var(--cream); }
   input:focus, textarea:focus { border-color: var(--gold); }
   textarea { resize: vertical; min-height: 90px; }
 
   /* SUMMARY */
   .summary-box {
-    background: rgba(255,249,241,0.05); border: 1px solid rgba(201,169,110,0.3);
-    color: var(--cream); padding: 1.75rem; margin-bottom: 2rem; position: relative; overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid rgba(201,169,110,0.25);
+    color: var(--cream);
+    padding: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
   }
   .summary-box::before {
     content: ''; position: absolute; top: -30px; right: -30px;
-    width: 120px; height: 120px; border: 1px solid rgba(201,169,110,0.1); border-radius: 50%;
+    width: 110px; height: 110px;
+    border: 1px solid rgba(201,169,110,0.08); border-radius: 50%;
   }
   .summary-row {
     display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 0.5rem 0; border-bottom: 1px solid rgba(255,249,241,0.08); font-size: 0.95rem;
+    padding: 10px 0; border-bottom: 1px solid rgba(253,236,224,0.06);
   }
   .summary-row:last-child { border-bottom: none; }
   .summary-row .lbl {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.6rem;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.2rem;
+    font-size: 10px; text-transform: uppercase;
+    font-family: 'Playfair Display', serif; font-weight: 300; font-style: italic;
+    color: var(--cream); opacity: 0.45; margin-bottom: 4px;
   }
-  .summary-row .val { font-style: italic; font-size: 1rem; }
+  .summary-row .val { font-style: italic; font-size: 15px; font-weight: 300; }
   .summary-total {
-    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gold);
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gold);
     display: flex; justify-content: space-between; align-items: center;
   }
   .summary-total .lbl2 {
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.65rem;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    font-size: 11px; text-transform: uppercase;
+    font-family: 'Playfair Display', serif; font-weight: 300; font-style: italic;
+    color: var(--gold);
   }
-  .summary-total .amount { font-size: 1.6rem; font-weight: 300; color: var(--cream); }
+  .summary-total .amount {
+    font-family: 'League Gothic', sans-serif;
+    font-size: 2.5rem; color: var(--cream);
+  }
   .summary-total .amount small {
-    display: block; font-size: 0.7rem; font-family: 'Tenor Sans', sans-serif;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.1rem;
+    display: block; font-size: 10px;
+    font-family: 'Playfair Display', serif; font-weight: 300; text-transform: uppercase;
+    color: var(--gold-light); margin-top: 2px;
   }
 
   /* BUTTONS */
   .btn-primary {
-    background: var(--cream); color: var(--navy); border: none;
-    padding: 1rem 2.5rem; font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1rem;
+    display: inline-block;
+    background: var(--cream);
+    color: var(--navy);
+    padding: 11px 30px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    margin-top: 24px;
+    text-decoration: none;
   }
-  .btn-primary:hover { background: var(--gold-light); }
+  .btn-primary:hover { background: var(--navy); color: var(--cream); border-color: var(--cream); }
+
   .btn-back {
-    background: none; border: none; color: var(--muted);
-    font-family: 'Tenor Sans', sans-serif; font-size: 0.6rem;
-    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; padding: 0;
-    display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 0.15s;
+    background: none; border: none;
+    color: var(--cream);
+    opacity: 0.4;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300; font-style: italic;
+    font-size: 13px;
+    cursor: pointer; padding: 0;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-bottom: 28px; transition: opacity 0.15s;
   }
-  .btn-back:hover { color: var(--cream); }
+  .btn-back:hover { opacity: 0.9; }
+
   .stripe-btn {
-    background: var(--gold); color: var(--navy); border: none;
-    padding: 1.1rem 2.5rem; font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s;
-    display: inline-flex; align-items: center; justify-content: center;
-    gap: 0.6rem; width: 100%; margin-top: 1rem;
+    display: block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 13px 30px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
   }
   .stripe-btn:hover { background: #b8945a; }
 
   /* SUCCESS */
-  .success-wrap { text-align: center; padding: 3rem 1rem; animation: fadeUp 0.6s forwards; }
+  .success-wrap { text-align: center; padding: 64px 16px; animation: fadeUp 0.6s forwards; }
   .success-icon {
-    width: 64px; height: 64px; border: 1.5px solid var(--gold); border-radius: 50%;
+    width: 60px; height: 60px;
+    border: 1px solid var(--gold); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem; font-size: 1.5rem;
+    margin: 0 auto 24px; font-size: 1.3rem; color: var(--gold);
   }
   .success-wrap h2 {
-    font-family: 'League Gothic', sans-serif; font-size: 3rem; font-weight: 400;
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--cream);
+    font-family: 'League Gothic', sans-serif;
+    font-size: clamp(44px, 8vw, 60px); font-weight: 400; text-transform: uppercase;
+    margin-bottom: 12px; color: var(--cream);
   }
-  .success-wrap p { color: var(--gold-light); font-style: italic; max-width: 420px; margin: 0 auto; line-height: 1.6; }
+  .success-wrap > p {
+    font-size: 16px; font-weight: 300; font-style: italic;
+    color: var(--cream); opacity: 0.7;
+    max-width: 400px; margin: 0 auto; line-height: 1.7;
+  }
+  .next-steps {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,169,110,0.18);
+    padding: 24px; max-width: 400px;
+    margin: 28px auto 0; text-align: left;
+  }
+  .next-steps-lbl {
+    font-size: 11px; text-transform: uppercase;
+    font-family: 'Playfair Display', serif; font-weight: 300; font-style: italic;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .next-steps p {
+    font-size: 14px; font-weight: 300; font-style: italic;
+    color: var(--cream); opacity: 0.65; line-height: 1.7; margin-bottom: 8px;
+  }
+  .next-steps p:last-child { margin-bottom: 0; }
 
   /* FOOTER */
   .footer-note {
-    text-align: center; font-style: italic; font-size: 0.85rem; color: var(--muted);
-    margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,249,241,0.08);
+    text-align: center; font-style: italic; font-weight: 300;
+    font-size: 13px; color: var(--cream); opacity: 0.35;
+    margin-top: 60px; padding-top: 24px;
+    border-top: 1px solid rgba(253,236,224,0.07);
   }
+  .footer-note a { color: var(--gold); opacity: 1; text-decoration: none; }
 
   /* ERRORS */
-  .error-msg { color: #e07070; font-size: 0.8rem; font-style: italic; margin-top: 0.5rem; display: none; }
+  .error-msg { color: #e07a7a; font-size: 13px; font-style: italic; font-weight: 300; margin-top: 8px; display: none; }
   .error-msg.show { display: block; }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    main { padding: 48px 16px 80px; }
+    .step-title { font-size: 44px; }
+    .pkg-name { font-size: 30px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <p class="header-eyebrow">Bay Area — Summer 2026</p>
-  <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo" /a
+  <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo"
+  <p class="header-eyebrow">san francisco bay area — summer 2026</p>
 </header>
 
 <main>
 
-  <!-- STEP 1: Package -->
+  <!-- STEP 1 -->
   <div class="step active" id="step1">
     <div class="progress-bar">
       <div class="progress-seg active"></div><div class="progress-seg"></div>
@@ -359,44 +511,47 @@
     </div>
     <p class="step-label">Step 1 of 4</p>
     <h2 class="step-title">Choose your session</h2>
-    <p class="step-sub">all prices in USD <br> 50% deposit secures your date</p>
+    <p class="step-sub">all prices in USD &mdash; 50% deposit secures your date</p>
     <div class="package-grid">
       <div class="package-card" data-pkg="couples" data-price="400" data-duration="2 hours">
         <div class="check">✓</div>
         <div class="pkg-name">Couples</div>
-        <div class="pkg-desc">Perfect for engagements, anniversaries, and maternity</div>
+        <div class="pkg-desc">perfect for engagements, anniversaries, and maternity</div>
         <div class="pkg-price">$400</div>
+        <div class="pkg-deposit">$200 deposit today</div>
         <div class="pkg-duration">2-hour session</div>
       </div>
       <div class="package-card" data-pkg="families" data-price="250" data-duration="45 minutes">
         <div class="check">✓</div>
-        <div class="pkg-name">Families</div>
-        <div class="pkg-desc">Relaxed sessions that capture connection, not just smiles</div>
+        <div class="pkg-name">Family</div>
+        <div class="pkg-desc">relaxed sessions that capture connection, not just smiles</div>
         <div class="pkg-price">$250</div>
+        <div class="pkg-deposit">$125 deposit today</div>
         <div class="pkg-duration">45-minute session</div>
       </div>
       <div class="package-card" data-pkg="events" data-price="400" data-duration="Up to 3 hours">
         <div class="check">✓</div>
         <div class="pkg-name">Events</div>
-        <div class="pkg-desc">Perfect for birthdays, anniversaries, bridal showers, and baby showers</div>
+        <div class="pkg-desc">perfect for birthdays, anniversaries, bridal showers, and baby showers</div>
         <div class="pkg-price">$400</div>
-        <div class="pkg-duration">Up to 3-hour session</div>
+        <div class="pkg-deposit">$200 deposit today</div>
+        <div class="pkg-duration">3-hour session</div>
       </div>
     </div>
-    <p class="error-msg" id="err1">Please select a session type to continue.</p>
+    <p class="error-msg" id="err1">please select a session type to continue.</p>
     <button class="btn-primary" id="toStep2">Continue →</button>
   </div>
 
-  <!-- STEP 2: Date -->
+  <!-- STEP 2 -->
   <div class="step" id="step2">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg active"></div>
       <div class="progress-seg"></div><div class="progress-seg"></div>
     </div>
-    <button class="btn-back" id="backTo1">← Back</button>
+    <button class="btn-back" id="backTo1">← back</button>
     <p class="step-label">Step 2 of 4</p>
     <h2 class="step-title">Choose your date</h2>
-    <p class="step-sub">Select a date that works for you. I'll confirm availability within 24 hours.</p>
+    <p class="step-sub">select a date that works for you and i'll confirm availability within 24 hours.</p>
     <div class="calendar-wrap">
       <div class="cal-header">
         <button class="cal-nav" id="calPrev">‹</button>
@@ -405,76 +560,57 @@
       </div>
       <div class="cal-grid" id="calGrid"></div>
     </div>
-    <p class="error-msg" id="err2">Please select a date to continue.</p>
+    <p class="error-msg" id="err2">please select a date to continue.</p>
     <button class="btn-primary" id="toStep3">Continue →</button>
   </div>
 
-  <!-- STEP 3: Time -->
+  <!-- STEP 3 -->
   <div class="step" id="step3">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg done"></div>
       <div class="progress-seg active"></div><div class="progress-seg"></div>
     </div>
-    <button class="btn-back" id="backTo2">← Back</button>
+    <button class="btn-back" id="backTo2">← back</button>
     <p class="step-label">Step 3 of 4</p>
-    <h2 class="step-title">morning or evening?</h2>
-    <p class="step-sub">both are shot in natural light — exact timing confirmed 48 hrs before your session.</p>
+    <h2 class="step-title">Morning or evening?</h2>
+    <p class="step-sub">both are shot in natural light. exact timing confirmed 48 hrs before your session.</p>
     <div class="time-grid">
       <div class="time-card" data-time="morning">
         <div class="check">✓</div>
         <div class="time-img-wrap">
-          <img src="YOUR_MORNING_IMAGE_URL" alt="Morning session" onerror="this.style.display='none'" />
+          <img src="https://photos.smugmug.com/Lifestyle-Galleries/Couple-Photoshoots/i-Cwf5hXP/2/LNqN2NfbkT9LkcSbtGpF2ckcW6sb3CJkLZ4XXdzgm/O/_PPP0801.jpg" alt="Morning session" onerror="this.style.display='none'" />
         </div>
-        <div class="time-name">morning</div>
-        <div class="time-desc">soft golden light just after sunrise</div>
+        <div class="time-text">
+          <div class="time-name">morning</div>
+          <div class="time-desc">soft golden light just after sunrise</div>
+        </div>
       </div>
       <div class="time-card" data-time="evening">
         <div class="check">✓</div>
         <div class="time-img-wrap">
-          <img src="YOUR_EVENING_IMAGE_URL" alt="Evening session" onerror="this.style.display='none'" />
+          <img src="https://photos.smugmug.com/photos/i-2hCxwr7/0/KxtWSmZQMgJNvPg42PkQdLxCCPSdHNrV6LH887NnF/X5/i-2hCxwr7-X5.jpg" alt="Evening session" onerror="this.style.display='none'" />
         </div>
-        <div class="time-name">evening</div>
-        <div class="time-desc">warm golden hour into blue hour</div>
+        <div class="time-text">
+          <div class="time-name">evening</div>
+          <div class="time-desc">warm golden hour into blue hour</div>
+        </div>
       </div>
     </div>
     <p class="error-msg" id="err3">please choose a time of day to continue.</p>
     <button class="btn-primary" id="toStep4">Continue →</button>
   </div>
 
-  <!-- STEP 4: Details -->
+  <!-- STEP 4 -->
   <div class="step" id="step4">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg done"></div>
       <div class="progress-seg done"></div><div class="progress-seg active"></div>
     </div>
-    <button class="btn-back" id="backTo3">← Back</button>
+    <button class="btn-back" id="backTo3">← back</button>
     <p class="step-label">Step 4 of 4</p>
-    <h2 class="step-title">Your details</h2>
-    <p class="step-sub">Almost there — tell me a little about you.</p>
-    <div class="form-grid">
-      <div class="form-field">
-        <label>First name</label>
-        <input type="text" id="firstName" placeholder="Aria" />
-      </div>
-      <div class="form-field">
-        <label>Last name</label>
-        <input type="text" id="lastName" placeholder="Sharma" />
-      </div>
-      <div class="form-field full">
-        <label>Email address</label>
-        <input type="email" id="email" placeholder="aria@example.com" />
-      </div>
-      <div class="form-field full">
-        <label>Phone number</label>
-        <input type="tel" id="phone" placeholder="+1 (403) 555-0100" />
-      </div>
-      <div class="form-field full">
-        <label>Anything you'd like me to know? (optional)</label>
-        <textarea id="notes" placeholder="Tell me about your vision, any location ideas, or who's joining you…"></textarea>
-      </div>
-    </div>
-    <p class="error-msg" id="err4">Please fill in your name, email, and phone to continue.</p>
-    <div class="summary-box" id="summaryBox" style="display:none">
+    <h2 class="step-title">Confirm & pay</h2>
+    <p class="step-sub">here's your booking summary — pay the deposit to lock in your date.</p>
+    <div class="summary-box" id="summaryBox">
       <div class="summary-row">
         <div><div class="lbl">Session</div><div class="val" id="sumPkg">—</div></div>
         <div><div class="lbl">Duration</div><div class="val" id="sumDur">—</div></div>
@@ -488,8 +624,7 @@
         <div class="amount" id="sumDeposit">—<small>USD</small></div>
       </div>
     </div>
-    <button class="btn-primary" id="reviewBtn">Review booking →</button>
-    <button class="stripe-btn" id="payBtn" style="display:none">✦ Pay deposit with Stripe</button>
+    <button class="stripe-btn" id="payBtn">✦ Pay deposit with Stripe</button>
   </div>
 
   <!-- SUCCESS -->
@@ -498,21 +633,18 @@
       <div class="success-icon">✦</div>
       <h2>You're booked!</h2>
       <p>Your deposit has been received — thank you! I'll be in touch within 24 hours to confirm your session details and the exact time based on the light.</p>
-      <br>
-      <div style="background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);padding:1.5rem;max-width:400px;margin:1.5rem auto 0;text-align:left;">
-        <p style="font-family:'Tenor Sans',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">What happens next</p>
-        <p style="font-size:0.95rem;color:var(--gold-light);font-style:italic;line-height:1.7;margin-bottom:0.5rem;">① Check your email for a deposit confirmation from Stripe</p>
-        <p style="font-size:0.95rem;color:var(--gold-light);font-style:italic;line-height:1.7;margin-bottom:0.5rem;">② I'll reach out within 24 hrs to confirm your date &amp; exact session time</p>
-        <p style="font-size:0.95rem;color:var(--gold-light);font-style:italic;line-height:1.7;">③ 48 hours before your shoot, I'll send final timing based on golden hour</p>
+      <div class="next-steps">
+        <p class="next-steps-lbl">What happens next</p>
+        <p>① Check your email for a deposit confirmation from Stripe</p>
+        <p>② I'll reach out within 24 hrs to confirm your date &amp; exact session time</p>
+        <p>③ 48 hours before your shoot, I'll send final timing based on golden hour</p>
       </div>
-      <br>
-      <p style="font-size:0.9rem;font-style:italic;color:var(--cream);">Can't wait to work with you. — Priyanka</p>
-      <br>
-      <a href="https://priyankap.smugmug.com" style="font-family:'Tenor Sans',sans-serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;">← Back to website</a>
+      <p style="font-size:14px;font-style:italic;font-weight:300;opacity:0.75;margin-top:28px;">Can't wait to work with you. — Priyanka</p>
+      <a href="https://priyankap.smugmug.com" class="btn-primary" style="margin-top:28px;">← Back to website</a>
     </div>
   </div>
 
-  <p class="footer-note">Questions? Reach out at <a href="/cdn-cgi/l/email-protection#7a121f1616153a0a0813031b14111b0a54191517" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="fd9598919192bd8d8f94849c93969c8dd39e9290">[email&#160;protected]</span></a></p>
+  <p class="footer-note">Questions? <a href="/cdn-cgi/l/email-protection#81e9e4ededeec1f1f3e8f8e0efeae0f1afe2eeec"><span class="__cf_email__" data-cfemail="59313c35353619292b30203837323829773a3634">[email&#160;protected]</span></a></p>
 </main>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -529,14 +661,8 @@
     document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id === 'step4') {
-      document.getElementById('summaryBox').style.display = 'none';
-      document.getElementById('reviewBtn').style.display = 'inline-flex';
-      document.getElementById('payBtn').style.display = 'none';
-    }
   }
 
-  // Package cards
   document.querySelectorAll('.package-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.package-card').forEach(function(c) { c.classList.remove('selected'); });
@@ -549,7 +675,6 @@
     });
   });
 
-  // Time cards
   document.querySelectorAll('.time-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.time-card').forEach(function(c) { c.classList.remove('selected'); });
@@ -559,7 +684,6 @@
     });
   });
 
-  // Step navigation
   document.getElementById('toStep2').addEventListener('click', function() {
     if (!state.pkg) { document.getElementById('err1').classList.add('show'); return; }
     showStep('step2');
@@ -570,48 +694,75 @@
   });
   document.getElementById('toStep4').addEventListener('click', function() {
     if (!state.time) { document.getElementById('err3').classList.add('show'); return; }
+    // Populate summary immediately on entering step 4
+    var deposit = (state.price / 2).toFixed(2);
+    document.getElementById('sumPkg').textContent  = state.pkgName;
+    document.getElementById('sumDur').textContent  = state.duration;
+    document.getElementById('sumTime').textContent = state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session';
+    document.getElementById('sumDate').textContent = state.dateDisplay;
+    document.getElementById('sumDeposit').innerHTML = '$' + parseFloat(deposit).toLocaleString('en-US', {minimumFractionDigits:2}) + '<small>USD</small>';
     showStep('step4');
   });
   document.getElementById('backTo1').addEventListener('click', function() { showStep('step1'); });
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
   document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
 
-  // Calendar
+  // ── AVAILABILITY CONFIG ──
+  // Only June 2026 is available. Blocked dates within June:
+  var BLOCKED_DATES = [
+    '2026-06-03', // easing in
+    '2026-06-06', // morning already booked (block whole day for simplicity — or manage by slot)
+    '2026-06-18', // evening already booked
+    '2026-06-21'  // packing/family day
+  ];
+  var AVAILABLE_YEAR  = 2026;
+  var AVAILABLE_MONTH = 5; // June = index 5
+
+  function isBlocked(dateStr) {
+    return BLOCKED_DATES.indexOf(dateStr) !== -1;
+  }
+
   function renderCalendar() {
+    // Lock calendar to June 2026
+    calYear  = AVAILABLE_YEAR;
+    calMonth = AVAILABLE_MONTH;
     document.getElementById('calMonth').textContent = MONTHS[calMonth] + ' ' + calYear;
+    // Hide nav buttons — only one month available
+    document.getElementById('calPrev').style.display = 'none';
+    document.getElementById('calNext').style.display = 'none';
+
     var grid = document.getElementById('calGrid');
     grid.innerHTML = '';
     DAYS.forEach(function(d) {
       var el = document.createElement('div');
-      el.className = 'cal-dow';
-      el.textContent = d;
-      grid.appendChild(el);
+      el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el);
     });
     var firstDay = new Date(calYear, calMonth, 1).getDay();
     var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
     var todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     for (var i = 0; i < firstDay; i++) {
       var empty = document.createElement('div');
-      empty.className = 'cal-day empty';
-      grid.appendChild(empty);
+      empty.className = 'cal-day empty'; grid.appendChild(empty);
     }
     for (var d = 1; d <= daysInMonth; d++) {
       (function(day) {
         var el = document.createElement('div');
-        el.className = 'cal-day';
-        el.textContent = day;
+        el.className = 'cal-day'; el.textContent = day;
         var thisDate = new Date(calYear, calMonth, day);
-        if (thisDate < todayMidnight) {
-          el.classList.add('past');
+        var dateStr  = thisDate.toISOString().split('T')[0];
+        var isPast   = thisDate < todayMidnight;
+        var isUnavailable = isPast || isBlocked(dateStr);
+
+        if (isUnavailable) {
+          el.classList.add('past'); // reuse past style — greyed out, not clickable
         } else {
           if (thisDate.toDateString() === today.toDateString()) el.classList.add('today');
-          var dateStr = thisDate.toISOString().split('T')[0];
           if (state.date === dateStr) el.classList.add('selected');
           el.addEventListener('click', function() {
             document.querySelectorAll('.cal-day').forEach(function(c) { c.classList.remove('selected'); });
             el.classList.add('selected');
             state.date = dateStr;
-            state.dateDisplay = thisDate.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+            state.dateDisplay = thisDate.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
             document.getElementById('err2').classList.remove('show');
           });
         }
@@ -627,44 +778,18 @@
     calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCalendar();
   });
 
-  // Review
-  document.getElementById('reviewBtn').addEventListener('click', function() {
-    var first = document.getElementById('firstName').value.trim();
-    var last  = document.getElementById('lastName').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    if (!first || !last || !email || !phone) {
-      document.getElementById('err4').classList.add('show'); return;
-    }
-    document.getElementById('err4').classList.remove('show');
-    var deposit = (state.price / 2).toFixed(2);
-    document.getElementById('sumPkg').textContent  = state.pkgName;
-    document.getElementById('sumDur').textContent  = state.duration;
-    document.getElementById('sumTime').textContent = state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session';
-    document.getElementById('sumDate').textContent = state.dateDisplay;
-    document.getElementById('sumDeposit').innerHTML = '$' + parseFloat(deposit).toLocaleString('en-US', {minimumFractionDigits:2}) + '<small>USD</small>';
-    document.getElementById('summaryBox').style.display = 'block';
-    document.getElementById('reviewBtn').style.display = 'none';
-    document.getElementById('payBtn').style.display = 'flex';
-    document.getElementById('summaryBox').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  document.getElementById('payBtn').addEventListener('click', function() {
+    var stripeLinks = {
+      couples:  'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00',
+      families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
+      events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02'
+    };
+    var params = new URLSearchParams({
+      client_reference_id: state.pkg + '_' + state.date + '_' + state.time
+    });
+    window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
   });
 
-  // Stripe
-  // 🔧 Replace each placeholder with your real Stripe Payment Link URL
-  // Go to dashboard.stripe.com → Payment Links → + Create → set price to deposit amount
-  document.getElementById('payBtn').addEventListener('click', function() {
-  var stripeLinks = {
-    couples:  'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00',
-    families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
-    events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02',
-    weddings: 'https://buy.stripe.com/YOUR_WEDDINGS_LINK'
-  };
-
-  console.log(state.pkg);
-  window.location.href = stripeLinks[state.pkg];
-});
-
-  // Init
   var urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('success') === 'true') {
     showStep('stepSuccess');
