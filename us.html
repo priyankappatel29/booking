@@ -707,14 +707,24 @@
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
   document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
 
-  // ── AVAILABILITY CONFIG ──
   // Only June 2026 is available. Blocked dates within June:
-  var BLOCKED_DATES = [
-    '2026-06-03', // easing in
-    '2026-06-06', // morning already booked (block whole day for simplicity — or manage by slot)
-    '2026-06-18', // evening already booked
-    '2026-06-21'  // packing/family day
-  ];
+var BLOCKED_DATES = [
+  '2026-06-01',
+  '2026-06-02',
+  '2026-06-03',
+  '2026-06-06',
+  '2026-06-18',
+  '2026-06-21',
+  '2026-06-22',
+  '2026-06-23',
+  '2026-06-24',
+  '2026-06-25',
+  '2026-06-26',
+  '2026-06-27',
+  '2026-06-28',
+  '2026-06-29',
+  '2026-06-30'
+];
   var AVAILABLE_YEAR  = 2026;
   var AVAILABLE_MONTH = 5; // June = index 5
 
