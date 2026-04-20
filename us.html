@@ -497,7 +497,7 @@
 <body>
 
 <header>
-  <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo"
+  <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo" />
   <p class="header-eyebrow">san francisco bay area — summer 2026</p>
 </header>
 
@@ -714,6 +714,7 @@ var BLOCKED_DATES = [
   '2026-06-03',
   '2026-06-06',
   '2026-06-14',
+  '2026-06-18',
   '2026-06-21',
   '2026-06-22',
   '2026-06-23',
@@ -794,10 +795,26 @@ var BLOCKED_DATES = [
       families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
       events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02'
     };
-    var params = new URLSearchParams({
-      client_reference_id: state.pkg + '_' + state.date + '_' + state.time
+
+    // Send booking details to Formspree, then redirect to Stripe
+    fetch('https://formspree.io/f/mzdydaev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New Booking — ' + state.pkgName + ' · ' + state.dateDisplay,
+        page: 'US / Bay Area',
+        package: state.pkgName,
+        date: state.dateDisplay,
+        time: state.time,
+        deposit: '$' + (state.price / 2).toFixed(2) + ' USD'
+      })
+    }).finally(function() {
+      // Redirect to Stripe whether Formspree succeeded or failed
+      var params = new URLSearchParams({
+        client_reference_id: state.pkg + '_' + state.date + '_' + state.time
+      });
+      window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
     });
-    window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
   });
 
   var urlParams = new URLSearchParams(window.location.search);
