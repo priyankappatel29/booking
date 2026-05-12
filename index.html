@@ -602,14 +602,12 @@
   document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
 
   // ── BLOCKED DATES ──
-  // Radium BC trip: May 29 – Jun 2
-  // Bay Area trip: Jun 3 – Jun 20
   var BLOCKED_DATES = (function() {
     var blocked = [];
     // May 29–31
     for (var d = 29; d <= 31; d++) blocked.push('2026-05-' + d);
     // June 1–20
-    for (var d = 1; d <= 20; d++) blocked.push('2026-06-' + (d < 10 ? '0' + d : d));
+    for (var d = 1; d <= 21; d++) blocked.push('2026-06-' + (d < 10 ? '0' + d : d));
     blocked.push('2026-06-24');
     blocked.push('2026-06-25');
     blocked.push('2026-06-27');
