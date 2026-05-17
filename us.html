@@ -537,6 +537,14 @@
         <div class="pkg-deposit">$200 deposit today</div>
         <div class="pkg-duration">3-hour session</div>
       </div>
+      <div class="package-card" data-pkg="weddings" data-price="650" data-duration="2-hour coverage">
+        <div class="check">✓</div>
+        <div class="pkg-name">Weddings</div>
+        <div class="pkg-desc">intimate civil ceremonies captured with a documentary approach</div>
+        <div class="pkg-price">$650</div>
+        <div class="pkg-deposit">$325 deposit today</div>
+        <div class="pkg-duration">2-hour coverage</div>
+      </div>
     </div>
     <p class="error-msg" id="err1">please select a session type to continue.</p>
     <button class="btn-primary" id="toStep2">Continue →</button>
@@ -690,7 +698,19 @@
   });
   document.getElementById('toStep3').addEventListener('click', function() {
     if (!state.date) { document.getElementById('err2').classList.add('show'); return; }
-    showStep('step3');
+    // Weddings skip the morning/evening step
+    if (state.pkg === 'weddings') {
+      state.time = 'tbd';
+      var deposit = (state.price / 2).toFixed(2);
+      document.getElementById('sumPkg').textContent  = state.pkgName;
+      document.getElementById('sumDur').textContent  = state.duration;
+      document.getElementById('sumTime').textContent = 'To be confirmed';
+      document.getElementById('sumDate').textContent = state.dateDisplay;
+      document.getElementById('sumDeposit').innerHTML = '$' + parseFloat(deposit).toLocaleString('en-US', {minimumFractionDigits:2}) + '<small>USD</small>';
+      showStep('step4');
+    } else {
+      showStep('step3');
+    }
   });
   document.getElementById('toStep4').addEventListener('click', function() {
     if (!state.time) { document.getElementById('err3').classList.add('show'); return; }
@@ -705,7 +725,14 @@
   });
   document.getElementById('backTo1').addEventListener('click', function() { showStep('step1'); });
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
-  document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
+  document.getElementById('backTo3').addEventListener('click', function() {
+    // Weddings skipped step 3, so go back to step 2
+    if (state.pkg === 'weddings') {
+      showStep('step2');
+    } else {
+      showStep('step3');
+    }
+  });
 
   // Only June 2026 is available. Blocked dates within June:
 var BLOCKED_DATES = [
@@ -793,10 +820,11 @@ var BLOCKED_DATES = [
     var stripeLinks = {
       couples:  'https://buy.stripe.com/00w5kD8wQ8Bw7aqglVbAs00',
       families: 'https://buy.stripe.com/cNibJ128sg3YamC9XxbAs01',
-      events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02'
+      events:   'https://buy.stripe.com/cNi3cv14o4lg8eud9JbAs02',
+      weddings: 'https://buy.stripe.com/5kQfZh7sM05052i2v5bAs04'
     };
 
-    // Send booking details to Formspree, then redirect to Stripe
+    // Send booking details to your email via Formspree before redirecting to Stripe
     fetch('https://formspree.io/f/mzdydaev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -808,13 +836,12 @@ var BLOCKED_DATES = [
         time: state.time,
         deposit: '$' + (state.price / 2).toFixed(2) + ' USD'
       })
-    }).finally(function() {
-      // Redirect to Stripe whether Formspree succeeded or failed
-      var params = new URLSearchParams({
-        client_reference_id: state.pkg + '_' + state.date + '_' + state.time
-      });
-      window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
+    }).catch(function() {}); // silent fail — never block the redirect
+
+    var params = new URLSearchParams({
+      client_reference_id: state.pkg + '_' + state.date + '_' + state.time
     });
+    window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
   });
 
   var urlParams = new URLSearchParams(window.location.search);
