@@ -428,8 +428,8 @@
         <div class="check">✓</div>
         <div class="pkg-name">Weddings</div>
         <div class="pkg-desc">documentary approach that captures your day as it unfolds</div>
-        <div class="pkg-price">$2,499 <span style="font-size:11px;opacity:0.5">starting</span></div>
-        <div class="pkg-deposit">$1,249.50 deposit today</div>
+        <div class="pkg-price">$2,999 <span style="font-size:11px;opacity:0.5">starting</span></div>
+        <div class="pkg-deposit">$1,499.50 deposit today</div>
         <div class="pkg-duration">full day</div>
       </div>
     </div>
@@ -608,10 +608,12 @@
     for (var d = 29; d <= 31; d++) blocked.push('2026-05-' + d);
     // June 1–20
     for (var d = 1; d <= 21; d++) blocked.push('2026-06-' + (d < 10 ? '0' + d : d));
+    blocked.push('2026-06-23');
     blocked.push('2026-06-24');
-    blocked.push('2026-06-25');
     blocked.push('2026-06-27');
     blocked.push('2026-06-29');
+    for (var d = 1; d <= 21; d++) blocked.push('2026-07-' + (d < 10 ? '0' + d : d));
+    blocked.push('2026-07-18');
     return blocked;
   })();
 
