@@ -604,14 +604,15 @@
   .hero-right {
     flex: 1.4;
     position: relative;
-    min-height: 320px;
+    min-height: 380px;
+    height: 380px;
   }
   .hero-img-tall {
     position: absolute;
     left: 0;
     top: 0;
     width: 54%;
-    height: 110%;
+    height: 100%;
     overflow: hidden;
   }
   .hero-img-tall img {
@@ -624,7 +625,8 @@
   .hero-img-wide {
     position: absolute;
     right: 0;
-    top: 48px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 62%;
     height: 80%;
     overflow: hidden;
