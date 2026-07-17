@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>book a photo session — priyanka.photos</title>
-<meta property="og:description" content="couples, family, events & weddings. based in calgary, available beyond." />
+<title>book a photo session — priyanka patel</title>
+<meta property="og:description" content="book your photography session — couples, family, events & weddings." />
 <meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark_Mode.png" />
 <meta property="og:image:width" content="1080" />
 <meta property="og:image:height" content="1080" />
@@ -564,19 +564,18 @@
 
   /* HERO */
   .booking-hero {
-    display: flex;
-    gap: 0;
-    align-items: stretch;
-    max-width: 720px;
-    margin: 0 auto 56px;
-    padding: 0 24px;
-  }
+  display: flex;
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 0 24px 0;
+  box-sizing: border-box;
+}
   .hero-left {
     flex: 1.1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 40px;
+    padding-right: 24px;
   }
   .hero-title {
     font-family: 'League Gothic', sans-serif;
@@ -651,29 +650,23 @@
 </style>
 </head>
 <body>
-
 <header>
-  <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo" />
-</header>
-
-<main>
-
-  <!-- HERO — shown only on step 1 -->
-  <div class="booking-hero" id="bookingHero">
+<div class="booking-hero" id="bookingHero">
     <div class="hero-left">
-      <div class="hero-title">Book<br>a<br>Session</div>
-      <div class="hero-gold-line"></div>
-      <div class="hero-sub">calgary & beyond</div>
+	<img src="logo.png" alt="Priyanka Patel Photography" class="header-logo" />
+      <div class="hero-sub">book a session - calgary & beyond</div>
     </div>
     <div class="hero-right">
       <div class="hero-img-tall">
-        <img src="https://photos.smugmug.com/Home-Page/i-TrnNBjs/0/LrcxwnqXCPjG6FnBhrRp4cfdqtp5sC9q6PWpqgpG3/4K/22_05_26_20_51_43-4K.jpg" alt="Priyanka Patel Photography" />
+        <img src="https://photos.smugmug.com/Home-Page/i-XFgk7WK/0/KdgNhj8BpLMRB8N7JNfMFF7B65mpn7pQ88LhRbPmt/4K/03_02_24_17_16_21-4K.jpg" alt="Priyanka Patel Photography" />
       </div>
       <div class="hero-img-wide">
-        <img src="https://photos.smugmug.com/Home-Page/i-XFgk7WK/0/KdgNhj8BpLMRB8N7JNfMFF7B65mpn7pQ88LhRbPmt/4K/03_02_24_17_16_21-4K.jpg" alt="Priyanka Patel Photography" />
+        <img src="https://photos.smugmug.com/Home-Page/i-TrnNBjs/0/LrcxwnqXCPjG6FnBhrRp4cfdqtp5sC9q6PWpqgpG3/4K/22_05_26_20_51_43-4K.jpg" alt="Priyanka Patel Photography" />
       </div>
     </div>
   </div>
+
+<main>
 
   <!-- STEP 1 -->
   <div class="step active" id="step1">
