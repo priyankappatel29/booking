@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>book a photo session — priyanka patel</title>
-<meta property="og:description" content="book your photography session — couples, family, events & weddings." />
+<title>book a photo session — priyanka.photos</title>
+<meta property="og:description" content="couples, family, events & weddings. based in calgary, available beyond." />
 <meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark_Mode.png" />
 <meta property="og:image:width" content="1080" />
 <meta property="og:image:height" content="1080" />
@@ -37,7 +37,6 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
   header {
     text-align: center;
     padding: 56px 24px 44px;
@@ -69,10 +68,8 @@
     animation: fadeUp 0.7s 0.25s forwards;
   }
 
-  /* LAYOUT */
   main { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
 
-  /* STEPS */
   .step { display: none; }
   .step.active { display: block; animation: fadeUp 0.4s forwards; }
 
@@ -106,7 +103,6 @@
     margin-bottom: 36px;
   }
 
-  /* PROGRESS */
   .progress-bar { display: flex; gap: 6px; margin-bottom: 40px; }
   .progress-seg { height: 1px; flex: 1; background: rgba(253,236,224,0.12); transition: background 0.4s; }
   .progress-seg.done { background: var(--gold); }
@@ -209,10 +205,61 @@
     text-transform: uppercase; color: var(--cream); margin-bottom: 4px;
   }
   .time-desc { font-style: italic; font-weight: 300; font-size: 13px; color: var(--cream); opacity: 0.55; }
-  .time-note {
-    border-left: 1px solid var(--gold); padding: 10px 14px;
-    font-style: italic; font-size: 13px; font-weight: 300;
-    color: var(--cream); opacity: 0.65; margin-top: 8px;
+
+  /* LIGHT STRIP */
+  #lightStrip {
+    display: none;
+    background: rgba(201,169,110,0.06);
+    border: 1px solid rgba(201,169,110,0.18);
+    padding: 18px 20px 16px;
+    margin-bottom: 24px;
+  }
+  .light-strip-header {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    opacity: 0.9;
+    text-align: center;
+  }
+  .light-events {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .light-event {
+    padding: 0 16px 0 0;
+    border-right: 1px solid rgba(253,236,224,0.07);
+  }
+  .light-event:last-child { border-right: none; padding-right: 0; padding-left: 16px; }
+  .light-event:first-child { padding-left: 0; }
+  .light-event:not(:first-child):not(:last-child) { padding-left: 16px; }
+  .light-event-icon { font-size: 15px; margin-bottom: 5px; display: block; }
+  .light-event-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.55;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .light-event-time {
+    font-family: 'League Gothic', sans-serif;
+    font-size: 20px;
+    color: var(--cream);
+    line-height: 1;
+    display: block;
+  }
+  .light-event-time.loading { opacity: 0.25; }
+
+  @media (max-width: 480px) {
+    .light-events { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .light-event { border-right: none; padding: 0 !important; }
   }
 
   /* CALENDAR */
@@ -251,6 +298,142 @@
   .cal-day.today { border-color: rgba(201,169,110,0.5); opacity: 1; }
   .cal-day.past { opacity: 0.18; cursor: default; pointer-events: none; }
   .cal-day.empty { pointer-events: none; }
+
+  /* CONTRACT */
+  .contract-client-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 540px) { .contract-client-fields { grid-template-columns: 1fr; } }
+
+  .contract-field label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+
+  .contract-field input {
+    width: 100%;
+    background: rgba(253,236,224,0.04);
+    border: none;
+    border-bottom: 1px solid rgba(253,236,224,0.2);
+    color: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+    padding: 10px 0;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .contract-field input:focus { border-bottom-color: var(--gold); }
+
+  .contract-box {
+    background: rgba(253,236,224,0.03);
+    border: 1px solid rgba(253,236,224,0.08);
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .contract-box h3 {
+    font-family: 'League Gothic', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .contract-clause {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(253,236,224,0.06);
+  }
+  .contract-clause:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .contract-clause-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .contract-clause p {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--cream);
+    opacity: 0.75;
+  }
+
+  .contract-clause p strong {
+    color: var(--cream);
+    opacity: 1;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* SIGNATURE */
+  .sig-wrap {
+    margin-top: 28px;
+  }
+
+  .sig-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.5;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+
+
+  .contract-agree-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid rgba(253,236,224,0.08);
+    background: rgba(201,169,110,0.04);
+  }
+
+  .contract-agree-row input[type="checkbox"] {
+    width: 16px; height: 16px;
+    min-width: 16px;
+    margin-top: 2px;
+    accent-color: var(--gold);
+    cursor: pointer;
+  }
+
+  .contract-agree-row label {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.7;
+    line-height: 1.7;
+    cursor: pointer;
+  }
 
   /* SUMMARY */
   .summary-box {
@@ -324,6 +507,7 @@
     width: 100%; text-align: center; margin-top: 12px;
   }
   .stripe-btn:hover { background: #b8945a; }
+  .stripe-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
   /* SUCCESS */
   .success-wrap { text-align: center; padding: 64px 16px; animation: fadeUp 0.6s forwards; }
@@ -357,7 +541,6 @@
   }
   .next-steps p:last-child { margin-bottom: 0; }
 
-  /* FOOTER */
   .footer-note {
     text-align: center; font-style: italic; font-weight: 300;
     font-size: 13px; color: var(--cream); opacity: 0.35;
@@ -366,7 +549,6 @@
   }
   .footer-note a { color: var(--gold); opacity: 1; text-decoration: none; }
 
-  /* ERRORS */
   .error-msg { color: #e07a7a; font-size: 13px; font-style: italic; font-weight: 300; margin-top: 8px; display: none; }
   .error-msg.show { display: block; }
 
@@ -379,24 +561,127 @@
     .step-title { font-size: 44px; }
     .pkg-name { font-size: 30px; }
   }
+
+  /* HERO */
+  .booking-hero {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    max-width: 720px;
+    margin: 0 auto 56px;
+    padding: 0 24px;
+  }
+  .hero-left {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 40px;
+  }
+  .hero-title {
+    font-family: 'League Gothic', sans-serif;
+    font-size: clamp(64px, 10vw, 96px);
+    font-weight: 400;
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+  .hero-gold-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px 0;
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.55;
+    line-height: 1.7;
+  }
+  .hero-right {
+    flex: 1;
+    position: relative;
+    min-height: 320px;
+  }
+  .hero-img-tall {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 54%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .hero-img-tall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-img-wide {
+    position: absolute;
+    right: 0;
+    top: 32px;
+    width: 62%;
+    height: 70%;
+    overflow: hidden;
+    border: 3px solid var(--navy);
+  }
+  .hero-img-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .booking-hero {
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 36px;
+      padding: 0 16px;
+    }
+    .hero-left { padding-right: 0; }
+    .hero-right { min-height: 220px; }
+    .hero-title { font-size: 64px; }
+  }
 </style>
 </head>
 <body>
 
 <header>
   <img src="logo.png" alt="Priyanka Patel Photography" class="header-logo" />
-  <p class="header-eyebrow">calgary &amp; beyond</p>
 </header>
 
 <main>
+
+  <!-- HERO — shown only on step 1 -->
+  <div class="booking-hero" id="bookingHero">
+    <div class="hero-left">
+      <div class="hero-title">Book<br>a<br>Session</div>
+      <div class="hero-gold-line"></div>
+      <div class="hero-sub">calgary & beyond</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-tall">
+        <img src="https://photos.smugmug.com/Home-Page/i-TrnNBjs/0/LrcxwnqXCPjG6FnBhrRp4cfdqtp5sC9q6PWpqgpG3/4K/22_05_26_20_51_43-4K.jpg" alt="Priyanka Patel Photography" />
+      </div>
+      <div class="hero-img-wide">
+        <img src="https://photos.smugmug.com/Home-Page/i-XFgk7WK/0/KdgNhj8BpLMRB8N7JNfMFF7B65mpn7pQ88LhRbPmt/4K/03_02_24_17_16_21-4K.jpg" alt="Priyanka Patel Photography" />
+      </div>
+    </div>
+  </div>
 
   <!-- STEP 1 -->
   <div class="step active" id="step1">
     <div class="progress-bar">
       <div class="progress-seg active"></div><div class="progress-seg"></div>
-      <div class="progress-seg"></div><div class="progress-seg"></div>
+      <div class="progress-seg"></div><div class="progress-seg"></div><div class="progress-seg"></div>
     </div>
-    <p class="step-label">Step 1 of 4</p>
+    <p class="step-label">Step 1 of 5</p>
     <h2 class="step-title">Choose your session</h2>
     <p class="step-sub">all prices in CAD plus GST</p>
     <div class="package-grid">
@@ -441,10 +726,10 @@
   <div class="step" id="step2">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg active"></div>
-      <div class="progress-seg"></div><div class="progress-seg"></div>
+      <div class="progress-seg"></div><div class="progress-seg"></div><div class="progress-seg"></div>
     </div>
     <button class="btn-back" id="backTo1">← back</button>
-    <p class="step-label">Step 2 of 4</p>
+    <p class="step-label">Step 2 of 5</p>
     <h2 class="step-title">Choose your date</h2>
     <p class="step-sub">select a date that works for you and i'll confirm availability within 24 hours.</p>
     <div class="calendar-wrap">
@@ -463,12 +748,39 @@
   <div class="step" id="step3">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg done"></div>
-      <div class="progress-seg active"></div><div class="progress-seg"></div>
+      <div class="progress-seg active"></div><div class="progress-seg"></div><div class="progress-seg"></div>
     </div>
     <button class="btn-back" id="backTo2">← back</button>
-    <p class="step-label">Step 3 of 4</p>
+    <p class="step-label">Step 3 of 5</p>
     <h2 class="step-title">Morning or evening?</h2>
     <p class="step-sub">both are shot in natural light. exact timing confirmed 48 hrs before your session.</p>
+
+    <div id="lightStrip">
+      <div class="light-strip-header" id="lightStripDate">light on your date · calgary</div>
+      <div class="light-events">
+        <div class="light-event">
+          <span class="light-event-icon">🌄</span>
+          <span class="light-event-label">blue hour am</span>
+          <span class="light-event-time loading" id="ltBlueAM">—</span>
+        </div>
+        <div class="light-event">
+          <span class="light-event-icon">🌅</span>
+          <span class="light-event-label">sunrise</span>
+          <span class="light-event-time loading" id="ltSunrise">—</span>
+        </div>
+        <div class="light-event">
+          <span class="light-event-icon">🌇</span>
+          <span class="light-event-label">sunset</span>
+          <span class="light-event-time loading" id="ltSunset">—</span>
+        </div>
+        <div class="light-event">
+          <span class="light-event-icon">🌆</span>
+          <span class="light-event-label">blue hour pm</span>
+          <span class="light-event-time loading" id="ltBluePM">—</span>
+        </div>
+      </div>
+    </div>
+
     <div class="time-grid">
       <div class="time-card" data-time="morning">
         <div class="check">✓</div>
@@ -495,14 +807,101 @@
     <button class="btn-primary" id="toStep4">Continue →</button>
   </div>
 
-  <!-- STEP 4 -->
+  <!-- STEP 4 — CONTRACT -->
   <div class="step" id="step4">
     <div class="progress-bar">
       <div class="progress-seg done"></div><div class="progress-seg done"></div>
-      <div class="progress-seg done"></div><div class="progress-seg active"></div>
+      <div class="progress-seg done"></div><div class="progress-seg active"></div><div class="progress-seg"></div>
     </div>
     <button class="btn-back" id="backTo3">← back</button>
-    <p class="step-label">Step 4 of 4</p>
+    <p class="step-label">Step 4 of 5</p>
+    <h2 class="step-title">Review &amp; sign</h2>
+    <p class="step-sub">please read through the agreement, fill in your details, and sign below.</p>
+
+    <div class="contract-client-fields">
+      <div class="contract-field">
+        <label>First name</label>
+        <input type="text" id="clientFirstName" placeholder="Iris" autocomplete="given-name">
+      </div>
+      <div class="contract-field">
+        <label>Last name</label>
+        <input type="text" id="clientLastName" placeholder="West" autocomplete="family-name">
+      </div>
+      <div class="contract-field">
+        <label>Your email</label>
+        <input type="email" id="clientEmail" placeholder="you@email.com" autocomplete="email">
+      </div>
+    </div>
+
+    <div class="contract-box">
+      <h3>Photography Services Agreement</h3>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Parties</span>
+        <p>This agreement is between <strong>Priyanka Patel Photography</strong> (the Photographer, based in Calgary, AB) and the client named above (the Client).</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Session details</span>
+        <p>The Photographer agrees to provide photography services for a <strong id="c-pkg">—</strong> session on <strong id="c-date">—</strong> (<strong id="c-time">—</strong> session). Session duration: <strong id="c-duration">—</strong>.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Fees &amp; deposit</span>
+        <p>The total fee is <strong id="c-price">—</strong> CAD + GST. A non-refundable deposit of <strong id="c-deposit">—</strong> CAD + GST is due at the time of booking to secure the date. The remaining balance is due one week before the session date.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Delivery of photographs</span>
+        <p id="c-delivery">Edited photographs will be delivered via private online gallery within the agreed timeline.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Rescheduling &amp; cancellation</span>
+        <p id="c-cancel">The deposit is non-refundable. The Client may reschedule with sufficient notice as outlined at booking. Cancellation within the notice period will result in forfeiture of the deposit.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Copyright &amp; usage</span>
+        <p>The Photographer retains copyright of all images produced. The Client is granted a personal, non-commercial licence to print and share the delivered photographs for personal use. Images may not be sold, submitted to stock agencies, or used for commercial purposes without written permission. The Photographer may use images for portfolio and marketing purposes unless the Client requests otherwise in writing prior to the session.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Liability</span>
+        <p>The Photographer will make every effort to deliver high-quality photographs. In the unlikely event that images are lost or damaged due to equipment failure or circumstances beyond the Photographer's control, liability is limited to a refund of fees paid. The Photographer is not liable for undelivered images due to the Client's failure to cooperate or circumstances outside the Photographer's reasonable control.</p>
+      </div>
+
+      <div class="contract-clause">
+        <span class="contract-clause-num">Governing law</span>
+        <p>This agreement is governed by the laws of the Province of Alberta, Canada.</p>
+      </div>
+    </div>
+
+    <div class="sig-wrap">
+      <span class="sig-label">Type your full name to sign</span>
+      <div class="contract-field">
+        <input type="text" id="typedSig" placeholder="Iris West" autocomplete="name" style="font-size:20px;font-style:italic;letter-spacing:0.02em;padding:14px 0;">
+      </div>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--cream);opacity:0.35;margin-top:10px;">by typing your name above you are providing a legally binding electronic signature under Alberta's Electronic Transactions Act</p>
+    </div>
+
+    <div class="contract-agree-row">
+      <input type="checkbox" id="agreeCheck">
+      <label for="agreeCheck">I have read and agree to the terms of this Photography Services Agreement. I understand the deposit is non-refundable and that by entering my name above I am entering into a binding agreement with Priyanka Patel Photography.</label>
+    </div>
+
+    <p class="error-msg" id="err4">please type your full name and check the box above to continue.</p>
+    <button class="btn-primary" id="toStep5">Continue →</button>
+  </div>
+
+  <!-- STEP 5 — CONFIRM & PAY -->
+  <div class="step" id="step5">
+    <div class="progress-bar">
+      <div class="progress-seg done"></div><div class="progress-seg done"></div>
+      <div class="progress-seg done"></div><div class="progress-seg done"></div><div class="progress-seg active"></div>
+    </div>
+    <button class="btn-back" id="backTo4">← back</button>
+    <p class="step-label">Step 5 of 5</p>
     <h2 class="step-title">Confirm &amp; pay</h2>
     <p class="step-sub">here's your booking summary. pay the deposit to lock in your date.</p>
     <div class="summary-box" id="summaryBox">
@@ -513,6 +912,9 @@
       <div class="summary-row">
         <div><div class="lbl">Time of day</div><div class="val" id="sumTime">—</div></div>
         <div><div class="lbl">Date</div><div class="val" id="sumDate">—</div></div>
+      </div>
+      <div class="summary-row">
+        <div><div class="lbl">Client</div><div class="val" id="sumClient">—</div></div>
       </div>
       <div class="summary-total">
         <div class="lbl2">Deposit due today (50%)</div>
@@ -527,10 +929,10 @@
     <div class="success-wrap">
       <div class="success-icon">✦</div>
       <h2>You're booked!</h2>
-      <p>Your deposit has been received — thank you! I'll be in touch within 24 hours to confirm your session details and the exact time based on the light.</p>
+      <p>Your deposit has been received and your signed agreement has been emailed to you — thank you! I'll be in touch within 24 hours to confirm your session details.</p>
       <div class="next-steps">
         <p class="next-steps-lbl">What happens next</p>
-        <p>① Check your email for a deposit confirmation from Stripe</p>
+        <p>① Check your email for your deposit confirmation and a copy of your agreement</p>
         <p>② I'll reach out within 24 hrs to confirm your date &amp; exact session time</p>
         <p>③ 48 hours before your shoot, I'll send final timing based on golden hour</p>
       </div>
@@ -539,13 +941,19 @@
     </div>
   </div>
 
-  <p class="footer-note">Questions? <a href="mailto:hea.clients@gmail.com">hea.clients@gmail.com</a></p>
+  <p class="footer-note">Questions? <a href="mailto:info@priyanka.photos">info@priyanka.photos</a></p>
 </main>
 
 <script>
 (function() {
 
-  var state = { pkg: null, pkgName: null, price: 0, duration: null, time: null, date: null, dateDisplay: null };
+  var state = {
+    pkg: null, pkgName: null, price: 0, duration: null,
+    time: null, date: null, dateDisplay: null,
+    clientName: null, clientEmail: null,
+    clientIP: null
+  };
+
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
   var today = new Date();
@@ -555,21 +963,103 @@
   function showStep(id) {
     document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
+    var hero = document.getElementById('bookingHero');
+    if (hero) hero.style.display = (id === 'step1') ? 'flex' : 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // ── LIGHT TIMES ──
+  function formatISOTime(isoStr) {
+    if (!isoStr) return '—';
+    var d = new Date(isoStr);
+    var h = d.getHours(), m = d.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var h12 = h % 12 || 12;
+    return h12 + ':' + (m < 10 ? '0' + m : m) + ' ' + ampm;
+  }
+
+  function fetchLightTimes(dateStr) {
+    var strip = document.getElementById('lightStrip');
+    var els = {
+      blueAM: document.getElementById('ltBlueAM'),
+      sunrise: document.getElementById('ltSunrise'),
+      sunset: document.getElementById('ltSunset'),
+      bluePM: document.getElementById('ltBluePM')
+    };
+    strip.style.display = 'block';
+    Object.values(els).forEach(function(el) { el.textContent = '—'; el.classList.add('loading'); });
+    var d = new Date(dateStr + 'T12:00:00');
+    document.getElementById('lightStripDate').textContent =
+      d.toLocaleDateString('en-CA', { weekday:'long', month:'long', day:'numeric' }).toLowerCase() + ' · calgary';
+    fetch('https://api.sunrise-sunset.org/json?lat=51.0447&lng=-114.0719&date=' + dateStr + '&formatted=0&tzid=America/Edmonton')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'OK') {
+          els.blueAM.textContent  = formatISOTime(data.results.civil_twilight_begin);
+          els.sunrise.textContent = formatISOTime(data.results.sunrise);
+          els.sunset.textContent  = formatISOTime(data.results.sunset);
+          els.bluePM.textContent  = formatISOTime(data.results.civil_twilight_end);
+        } else {
+          Object.values(els).forEach(function(el) { el.textContent = 'n/a'; });
+        }
+        Object.values(els).forEach(function(el) { el.classList.remove('loading'); });
+      })
+      .catch(function() {
+        Object.values(els).forEach(function(el) { el.textContent = 'n/a'; el.classList.remove('loading'); });
+      });
+  }
+
+  // ── DELIVERY TIMELINE BY SESSION TYPE ──
+  function getDeliveryText(pkg) {
+    var timelines = {
+      couples:  'Edited photographs will be delivered via private online gallery within <strong>3 weeks</strong> of the session date.',
+      families: 'Edited photographs will be delivered via private online gallery within <strong>3 weeks</strong> of the session date.',
+      events:   'Edited photographs will be delivered via private online gallery within <strong>4 weeks</strong> of the session date.',
+      weddings: 'Edited photographs will be delivered via private online gallery within <strong>8–12 weeks</strong> of the wedding date.'
+    };
+    return timelines[pkg] || 'Edited photographs will be delivered via private online gallery within the agreed timeline.';
+  }
+
+  // ── CANCELLATION POLICY BY SESSION TYPE ──
+  function getCancelText(pkg) {
+    if (pkg === 'weddings') {
+      return 'The deposit is non-refundable under all circumstances. The Client may reschedule with a minimum of <strong>4–6 weeks\' notice</strong>. Cancellations with less notice will result in forfeiture of the full deposit. If the Photographer must cancel due to circumstances beyond their control, a full refund of all payments will be issued.';
+    }
+    return 'The deposit is non-refundable under all circumstances. The Client may reschedule with a minimum of <strong>2 weeks\' notice</strong>. Cancellations with less notice will result in forfeiture of the full deposit. If the Photographer must cancel due to circumstances beyond their control, a full refund of all payments will be issued.';
+  }
+
+  // ── POPULATE CONTRACT ──
+  function populateContract() {
+    document.getElementById('c-pkg').textContent      = state.pkgName || '—';
+    document.getElementById('c-date').textContent     = state.dateDisplay || '—';
+    document.getElementById('c-time').textContent     = state.time ? (state.time.charAt(0).toUpperCase() + state.time.slice(1)) : '—';
+    document.getElementById('c-duration').textContent = state.duration || '—';
+    document.getElementById('c-price').textContent    = '$' + state.price.toLocaleString('en-CA');
+    document.getElementById('c-deposit').textContent  = '$' + (state.price / 2).toFixed(2);
+    document.getElementById('c-delivery').innerHTML   = getDeliveryText(state.pkg);
+    document.getElementById('c-cancel').innerHTML     = getCancelText(state.pkg);
+  }
+
+  // ── FETCH CLIENT IP ON PAGE LOAD ──
+  fetch('https://api.ipify.org?format=json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) { state.clientIP = data.ip; })
+    .catch(function() { state.clientIP = 'unavailable'; });
+
+  // ── PACKAGE CARDS ──
   document.querySelectorAll('.package-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.package-card').forEach(function(c) { c.classList.remove('selected'); });
       card.classList.add('selected');
-      state.pkg = card.dataset.pkg;
-      state.pkgName = card.querySelector('.pkg-name').textContent;
-      state.price = parseFloat(card.dataset.price);
+      state.pkg      = card.dataset.pkg;
+      state.pkgName  = card.querySelector('.pkg-name').textContent;
+      state.price    = parseFloat(card.dataset.price);
       state.duration = card.dataset.duration;
       document.getElementById('err1').classList.remove('show');
     });
   });
 
+  // ── TIME CARDS ──
   document.querySelectorAll('.time-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.time-card').forEach(function(c) { c.classList.remove('selected'); });
@@ -579,34 +1069,130 @@
     });
   });
 
+  // ── NAVIGATION ──
   document.getElementById('toStep2').addEventListener('click', function() {
     if (!state.pkg) { document.getElementById('err1').classList.add('show'); return; }
     showStep('step2');
   });
+
   document.getElementById('toStep3').addEventListener('click', function() {
     if (!state.date) { document.getElementById('err2').classList.add('show'); return; }
+    fetchLightTimes(state.date);
     showStep('step3');
   });
+
   document.getElementById('toStep4').addEventListener('click', function() {
     if (!state.time) { document.getElementById('err3').classList.add('show'); return; }
-    var deposit = (state.price / 2).toFixed(2);
-    document.getElementById('sumPkg').textContent  = state.pkgName;
-    document.getElementById('sumDur').textContent  = state.duration;
-    document.getElementById('sumTime').textContent = state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session';
-    document.getElementById('sumDate').textContent = state.dateDisplay;
-    document.getElementById('sumDeposit').innerHTML = '$' + parseFloat(deposit).toLocaleString('en-CA', {minimumFractionDigits:2}) + '<small>+ GST</small>';
+    populateContract();
     showStep('step4');
   });
+
+  document.getElementById('toStep5').addEventListener('click', function() {
+    var firstName = document.getElementById('clientFirstName').value.trim();
+    var lastName  = document.getElementById('clientLastName').value.trim();
+    var name      = (firstName + ' ' + lastName).trim();
+    var email     = document.getElementById('clientEmail').value.trim();
+    var typedSig  = document.getElementById('typedSig').value.trim();
+    var agreed    = document.getElementById('agreeCheck').checked;
+
+    if (!name || !email || !typedSig || !agreed) {
+      document.getElementById('err4').classList.add('show');
+      return;
+    }
+
+    document.getElementById('err4').classList.remove('show');
+    state.clientName  = name;
+    state.clientEmail = email;
+
+    var signedAt  = new Date().toLocaleString('en-CA', { year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'short' });
+    var contractText =
+      'PHOTOGRAPHY SERVICES AGREEMENT\n\n' +
+      'Client: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Session: ' + state.pkgName + '\n' +
+      'Date: ' + state.dateDisplay + '\n' +
+      'Time: ' + (state.time ? state.time.charAt(0).toUpperCase() + state.time.slice(1) : '—') + '\n' +
+      'Duration: ' + state.duration + '\n' +
+      'Total fee: $' + state.price + ' CAD + GST\n' +
+      'Deposit: $' + (state.price / 2).toFixed(2) + ' CAD + GST\n\n' +
+      'Delivery: ' + document.getElementById('c-delivery').textContent + '\n\n' +
+      'Cancellation: ' + document.getElementById('c-cancel').textContent + '\n\n' +
+      '——————————————————————\n' +
+      'ELECTRONIC SIGNATURE RECORD\n' +
+      'Signed by: ' + typedSig + '\n' +
+      'Signed at: ' + signedAt + '\n' +
+      'IP address: ' + (state.clientIP || 'unavailable') + '\n' +
+      'Client confirmed: "I have read and agree to the terms of this Photography Services Agreement."\n' +
+      '——————————————————————\n\n' +
+      '— Priyanka Patel Photography · info@priyanka.photos';
+
+    fetch('https://formspree.io/f/mlgqjdlj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject:      'Signed Agreement — ' + state.pkgName + ' · ' + name,
+        _replyto:      email,
+        'Client name': name,
+        'Client email': email,
+        Package:       state.pkgName,
+        Date:          state.dateDisplay,
+        Time:          state.time,
+        'Contract':    contractText
+      })
+    }).catch(function() {}); // fire and forget, don't block UX
+
+    // Populate confirm step
+    var deposit = (state.price / 2).toFixed(2);
+    document.getElementById('sumPkg').textContent    = state.pkgName;
+    document.getElementById('sumDur').textContent    = state.duration;
+    document.getElementById('sumTime').textContent   = state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session';
+    document.getElementById('sumDate').textContent   = state.dateDisplay;
+    document.getElementById('sumClient').textContent = name + ' · ' + email;
+    document.getElementById('sumDeposit').innerHTML  = '$' + parseFloat(deposit).toLocaleString('en-CA', {minimumFractionDigits:2}) + '<small>+ GST</small>';
+
+    showStep('step5');
+  });
+
   document.getElementById('backTo1').addEventListener('click', function() { showStep('step1'); });
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
   document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
+  document.getElementById('backTo4').addEventListener('click', function() { showStep('step4'); });
+
+  // ── PAY BUTTON ──
+  document.getElementById('payBtn').addEventListener('click', function() {
+    var stripeLinks = {
+      couples:  'https://buy.stripe.com/YOUR_COUPLES_LINK',
+      families: 'https://buy.stripe.com/YOUR_FAMILIES_LINK',
+      events:   'https://buy.stripe.com/YOUR_EVENTS_LINK',
+      weddings: 'https://buy.stripe.com/YOUR_WEDDINGS_LINK'
+    };
+    fetch('https://formspree.io/f/mlgqjdlj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New Booking — ' + state.pkgName + ' · ' + state.dateDisplay,
+        _replyto: state.clientEmail,
+        page: 'Canada',
+        package: state.pkgName,
+        date: state.dateDisplay,
+        time: state.time,
+        client: state.clientName,
+        email: state.clientEmail,
+        deposit: '$' + (state.price / 2).toFixed(2) + ' CAD + GST'
+      })
+    }).finally(function() {
+      var params = new URLSearchParams({
+        client_reference_id: state.pkg + '_' + state.date + '_' + state.time,
+        prefilled_email: state.clientEmail || ''
+      });
+      window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
+    });
+  });
 
   // ── BLOCKED DATES ──
   var BLOCKED_DATES = (function() {
     var blocked = [];
-    // May 29–31
     for (var d = 29; d <= 31; d++) blocked.push('2026-05-' + d);
-    // June 1–20
     for (var d = 1; d <= 21; d++) blocked.push('2026-06-' + (d < 10 ? '0' + d : d));
     blocked.push('2026-06-23');
     blocked.push('2026-06-24');
@@ -617,10 +1203,9 @@
     return blocked;
   })();
 
-  function isBlocked(dateStr) {
-    return BLOCKED_DATES.indexOf(dateStr) !== -1;
-  }
+  function isBlocked(dateStr) { return BLOCKED_DATES.indexOf(dateStr) !== -1; }
 
+  // ── CALENDAR ──
   function renderCalendar() {
     document.getElementById('calMonth').textContent = MONTHS[calMonth] + ' ' + calYear;
     var grid = document.getElementById('calGrid');
@@ -641,9 +1226,8 @@
         var el = document.createElement('div');
         el.className = 'cal-day'; el.textContent = day;
         var thisDate = new Date(calYear, calMonth, day);
-        var dateStr  = thisDate.toISOString().split('T')[0];
-        var isUnavailable = thisDate < todayMidnight || isBlocked(dateStr);
-        if (isUnavailable) {
+        var dateStr = thisDate.toISOString().split('T')[0];
+        if (thisDate < todayMidnight || isBlocked(dateStr)) {
           el.classList.add('past');
         } else {
           if (thisDate.toDateString() === today.toDateString()) el.classList.add('today');
@@ -666,34 +1250,6 @@
   });
   document.getElementById('calNext').addEventListener('click', function() {
     calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCalendar();
-  });
-
-  document.getElementById('payBtn').addEventListener('click', function() {
-    var stripeLinks = {
-      couples:  'https://buy.stripe.com/YOUR_COUPLES_LINK',
-      families: 'https://buy.stripe.com/YOUR_FAMILIES_LINK',
-      events:   'https://buy.stripe.com/YOUR_EVENTS_LINK',
-      weddings: 'https://buy.stripe.com/YOUR_WEDDINGS_LINK'
-    };
-
-    // Send booking details to Formspree, then redirect to Stripe
-    fetch('https://formspree.io/f/mzdydaev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: 'New Booking — ' + state.pkgName + ' · ' + state.dateDisplay,
-        page: 'Canada',
-        package: state.pkgName,
-        date: state.dateDisplay,
-        time: state.time,
-        deposit: '$' + (state.price / 2).toFixed(2) + ' CAD + GST'
-      })
-    }).finally(function() {
-      var params = new URLSearchParams({
-        client_reference_id: state.pkg + '_' + state.date + '_' + state.time
-      });
-      window.location.href = stripeLinks[state.pkg] + '?' + params.toString();
-    });
   });
 
   var urlParams = new URLSearchParams(window.location.search);
