@@ -39,7 +39,7 @@
 
   header {
     text-align: center;
-    padding: 56px 24px 44px;
+    padding: 48px 24px 24px;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid rgba(201,169,110,0.15);
@@ -68,7 +68,7 @@
     animation: fadeUp 0.7s 0.25s forwards;
   }
 
-  main { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 24px 24px; }
 
   .step { display: none; }
   .step.active { display: block; animation: fadeUp 0.4s forwards; }
@@ -544,7 +544,8 @@
   .footer-note {
     text-align: center; font-style: italic; font-weight: 300;
     font-size: 13px; color: var(--cream); opacity: 0.35;
-    margin-top: 60px; padding-top: 24px;
+    margin-top: 24px; 
+    padding-top: 24px;
     border-top: 1px solid rgba(253,236,224,0.07);
   }
   .footer-note a { color: var(--gold); opacity: 1; text-decoration: none; }
@@ -567,7 +568,6 @@
   display: flex;
   width: 100%;
   padding: 0 24px;
-  margin: 0 0 24px 0;
   box-sizing: border-box;
 }
   .hero-left {
@@ -575,7 +575,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 24px;
+    padding-right:0px;
   }
   .hero-title {
     font-family: 'League Gothic', sans-serif;
@@ -704,7 +704,7 @@
         <div class="pkg-deposit">$249.50 deposit today</div>
         <div class="pkg-duration">up to 3-hour session</div>
       </div>
-      <div class="package-card" data-pkg="weddings" data-price="2499" data-duration="Full day">
+      <div class="package-card" data-pkg="weddings" data-price="2999" data-duration="Full day">
         <div class="check">✓</div>
         <div class="pkg-name">Weddings</div>
         <div class="pkg-desc">documentary approach that captures your day as it unfolds</div>
@@ -754,22 +754,18 @@
       <div class="light-strip-header" id="lightStripDate">light on your date · calgary</div>
       <div class="light-events">
         <div class="light-event">
-          <span class="light-event-icon">🌄</span>
           <span class="light-event-label">blue hour am</span>
           <span class="light-event-time loading" id="ltBlueAM">—</span>
         </div>
         <div class="light-event">
-          <span class="light-event-icon">🌅</span>
           <span class="light-event-label">sunrise</span>
           <span class="light-event-time loading" id="ltSunrise">—</span>
         </div>
         <div class="light-event">
-          <span class="light-event-icon">🌇</span>
           <span class="light-event-label">sunset</span>
           <span class="light-event-time loading" id="ltSunset">—</span>
         </div>
         <div class="light-event">
-          <span class="light-event-icon">🌆</span>
           <span class="light-event-label">blue hour pm</span>
           <span class="light-event-time loading" id="ltBluePM">—</span>
         </div>
@@ -816,11 +812,11 @@
     <div class="contract-client-fields">
       <div class="contract-field">
         <label>First name</label>
-        <input type="text" id="clientFirstName" placeholder="Iris" autocomplete="given-name">
+        <input type="text" id="clientFirstName" placeholder="iris" autocomplete="given-name">
       </div>
       <div class="contract-field">
         <label>Last name</label>
-        <input type="text" id="clientLastName" placeholder="West" autocomplete="family-name">
+        <input type="text" id="clientLastName" placeholder="west" autocomplete="family-name">
       </div>
       <div class="contract-field">
         <label>Your email</label>
@@ -875,7 +871,7 @@
     <div class="sig-wrap">
       <span class="sig-label">Type your full name to sign</span>
       <div class="contract-field">
-        <input type="text" id="typedSig" placeholder="Iris West" autocomplete="name" style="font-size:20px;font-style:italic;letter-spacing:0.02em;padding:14px 0;">
+        <input type="text" id="typedSig" placeholder="iris west" autocomplete="name" style="font-size:20px;font-style:italic;letter-spacing:0.02em;padding:14px 0;">
       </div>
       <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--cream);opacity:0.35;margin-top:10px;">by typing your name above you are providing a legally binding electronic signature under Alberta's Electronic Transactions Act</p>
     </div>
@@ -1027,7 +1023,7 @@
   function populateContract() {
     document.getElementById('c-pkg').textContent      = state.pkgName || '—';
     document.getElementById('c-date').textContent     = state.dateDisplay || '—';
-    document.getElementById('c-time').textContent     = state.time ? (state.time.charAt(0).toUpperCase() + state.time.slice(1)) : '—';
+    document.getElementById('c-time').textContent     = (state.time && state.time !== 'tbd') ? (state.time.charAt(0).toUpperCase() + state.time.slice(1)) : 'to be confirmed';
     document.getElementById('c-duration').textContent = state.duration || '—';
     document.getElementById('c-price').textContent    = '$' + state.price.toLocaleString('en-CA');
     document.getElementById('c-deposit').textContent  = '$' + (state.price / 2).toFixed(2);
@@ -1072,6 +1068,12 @@
 
   document.getElementById('toStep3').addEventListener('click', function() {
     if (!state.date) { document.getElementById('err2').classList.add('show'); return; }
+    if (state.pkg === 'weddings' || state.pkg === 'events') {
+      state.time = 'tbd';
+      populateContract();
+      showStep('step4');
+      return;
+    }
     fetchLightTimes(state.date);
     showStep('step3');
   });
@@ -1140,7 +1142,7 @@
     var deposit = (state.price / 2).toFixed(2);
     document.getElementById('sumPkg').textContent    = state.pkgName;
     document.getElementById('sumDur').textContent    = state.duration;
-    document.getElementById('sumTime').textContent   = state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session';
+    document.getElementById('sumTime').textContent   = (state.time && state.time !== 'tbd') ? state.time.charAt(0).toUpperCase() + state.time.slice(1) + ' session' : 'to be confirmed';
     document.getElementById('sumDate').textContent   = state.dateDisplay;
     document.getElementById('sumClient').textContent = name + ' · ' + email;
     document.getElementById('sumDeposit').innerHTML  = '$' + parseFloat(deposit).toLocaleString('en-CA', {minimumFractionDigits:2}) + '<small>+ GST</small>';
@@ -1150,7 +1152,9 @@
 
   document.getElementById('backTo1').addEventListener('click', function() { showStep('step1'); });
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
-  document.getElementById('backTo3').addEventListener('click', function() { showStep('step3'); });
+  document.getElementById('backTo3').addEventListener('click', function() {
+    if (state.pkg === 'weddings' || state.pkg === 'events') { showStep('step2'); } else { showStep('step3'); }
+  });
   document.getElementById('backTo4').addEventListener('click', function() { showStep('step4'); });
 
   // ── PAY BUTTON ──
