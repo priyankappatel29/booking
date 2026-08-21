@@ -509,6 +509,61 @@
   .stripe-btn:hover { background: #b8945a; }
   .stripe-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+  .interac-btn {
+    display: block; background: transparent; color: var(--cream);
+    padding: 13px 30px; border-radius: 100px;
+    font-size: 15px; font-family: 'Playfair Display', serif; font-weight: 400;
+    font-style: italic;
+    border: 1px solid rgba(253,236,224,0.25); cursor: pointer;
+    transition: border-color 0.25s, color 0.25s;
+    width: 100%; text-align: center; margin-top: 10px;
+  }
+  .interac-btn:hover { border-color: var(--cream); }
+
+  .interac-box {
+    display: none;
+    background: rgba(253,236,224,0.04);
+    border: 1px solid rgba(253,236,224,0.12);
+    padding: 24px;
+    margin-top: 16px;
+    animation: fadeUp 0.4s forwards;
+  }
+  .interac-box-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+    font-family: 'Playfair Display', serif; font-weight: 300; font-style: italic;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .interac-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px solid rgba(253,236,224,0.06);
+    font-family: 'Playfair Display', serif; font-size: 14px;
+  }
+  .interac-row:last-of-type { border-bottom: none; }
+  .interac-row span { opacity: 0.45; font-style: italic; font-weight: 300; }
+  .interac-row strong { font-weight: 400; font-style: italic; color: var(--cream); }
+  .interac-note {
+    margin-top: 14px; font-size: 13px; font-style: italic; font-weight: 300;
+    color: var(--cream); opacity: 0.5; line-height: 1.7;
+    font-family: 'Playfair Display', serif;
+  }
+  .interac-sent-btn {
+    display: block; width: 100%; margin-top: 16px;
+    background: var(--cream); color: var(--navy);
+    padding: 12px 24px; border-radius: 100px;
+    font-size: 15px; font-family: 'Playfair Display', serif; font-weight: 600;
+    border: none; cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .interac-sent-btn:hover { background: var(--navy); color: var(--cream); border: 1px solid var(--cream); }
+  .interac-confirm {
+    margin-top: 16px; padding: 20px;
+    background: rgba(253,236,224,0.04);
+    border: 1px solid rgba(253,236,224,0.12);
+    text-align: center;
+    animation: fadeUp 0.4s forwards;
+  }
+
   /* SUCCESS */
   .success-wrap { text-align: center; padding: 64px 16px; animation: fadeUp 0.6s forwards; }
   .success-icon {
@@ -649,6 +704,35 @@
     .hero-right { min-height: 220px; }
     .hero-title { font-size: 64px; }
   }
+
+  /* ── FALL MINIS DATE/TIME PICKER ── */
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  .mini-col-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    font-family: 'Playfair Display', serif; font-weight: 300; font-style: italic;
+    color: var(--gold); opacity: 0.9; margin-bottom: 14px;
+  }
+  .mini-dates-list { display: flex; flex-direction: column; gap: 10px; }
+  .mini-date-card {
+    border: 1px solid var(--card-border); background: var(--card-bg);
+    padding: 16px 18px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .mini-date-card:hover { border-color: rgba(201,169,110,0.4); }
+  .mini-date-card.selected { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+  .mini-date-day { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300; font-size: 13px; color: var(--cream); opacity: 0.55; }
+  .mini-date-num { font-family: 'League Gothic', sans-serif; font-size: 22px; color: var(--cream); }
+  .mini-times-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mini-time-slot {
+    border: 1px solid var(--card-border); background: var(--card-bg);
+    padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.2s;
+    font-family: 'League Gothic', sans-serif; font-size: 20px; color: var(--cream);
+  }
+  .mini-time-slot:hover { border-color: rgba(201,169,110,0.4); }
+  .mini-time-slot.selected { border-color: var(--gold); background: rgba(201,169,110,0.08); color: var(--gold); }
+  .mini-time-slot.booked { opacity: 0.25; cursor: not-allowed; text-decoration: line-through; pointer-events: none; }
+  .mini-times-placeholder { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 300; font-size: 13px; color: var(--cream); opacity: 0.4; padding: 16px 0; }
+  @media (max-width: 600px) { .mini-grid { grid-template-columns: 1fr; gap: 28px; } }
 </style>
 </head>
 <body>
@@ -712,6 +796,14 @@
         <div class="pkg-deposit">$1,499.50 deposit today</div>
         <div class="pkg-duration">full day</div>
       </div>
+      <div class="package-card" data-pkg="fallminis" data-price="199" data-duration="20 minutes">
+        <div class="check">✓</div>
+        <div class="pkg-name">Fall Minis</div>
+        <div class="pkg-desc">limited fall mini sessions — fixed dates & time slots, golden hour light</div>
+        <div class="pkg-price">$199</div>
+        <div class="pkg-deposit">$99.50 deposit today</div>
+        <div class="pkg-duration">20-minute session</div>
+      </div>
     </div>
     <p class="error-msg" id="err1">please select a session type to continue.</p>
     <button class="btn-primary" id="toStep2">Continue →</button>
@@ -726,8 +818,8 @@
     <button class="btn-back" id="backTo1">← back</button>
     <p class="step-label">Step 2 of 5</p>
     <h2 class="step-title">Choose your date</h2>
-    <p class="step-sub">select a date that works for you and i'll confirm availability within 24 hours.</p>
-    <div class="calendar-wrap">
+    <p class="step-sub" id="step2Sub">select a date that works for you and i'll confirm availability within 24 hours.</p>
+    <div class="calendar-wrap" id="calendarWrap">
       <div class="cal-header">
         <button class="cal-nav" id="calPrev">‹</button>
         <div class="cal-month" id="calMonth"></div>
@@ -735,6 +827,21 @@
       </div>
       <div class="cal-grid" id="calGrid"></div>
     </div>
+
+    <!-- FALL MINIS: date + time picker, hidden by default -->
+    <div id="miniWrap" style="display:none;">
+      <div class="mini-grid">
+        <div>
+          <div class="mini-col-label">available dates</div>
+          <div class="mini-dates-list" id="miniDatesList"></div>
+        </div>
+        <div>
+          <div class="mini-col-label">available times</div>
+          <div id="miniTimesList"><p class="mini-times-placeholder" id="miniTimesPlaceholder">choose a date first</p></div>
+        </div>
+      </div>
+    </div>
+
     <p class="error-msg" id="err2">please select a date to continue.</p>
     <button class="btn-primary" id="toStep3">Continue →</button>
   </div>
@@ -913,6 +1020,19 @@
       </div>
     </div>
     <button class="stripe-btn" id="payBtn">✦ Pay deposit with Stripe</button>
+    <button class="interac-btn" id="interacBtn">Pay with Interac e-transfer</button>
+    <div class="interac-box" id="interacBox">
+      <div class="interac-box-label">interac e-transfer details</div>
+      <div class="interac-row"><span>send to</span><strong>priyanka.p.patel29@gmail.com</strong></div>
+      <div class="interac-row"><span>amount</span><strong id="interacAmount">—</strong></div>
+      <div class="interac-row"><span>message</span><strong id="interacMsg">—</strong></div>
+      <p class="interac-note">once your transfer is received i'll send a confirmation email within 24 hours to lock in your date.</p>
+      <button class="interac-sent-btn" id="interacSentBtn">Interac e-Transfer sent</button>
+    </div>
+    <div class="interac-confirm" id="interacConfirm" style="display:none;">
+      <div class="success-icon" style="width:40px;height:40px;font-size:1rem;margin:0 0 12px;">✦</div>
+      <p style="font-style:italic;font-weight:300;font-size:15px;opacity:0.85;line-height:1.7;">got it — once i receive your transfer i'll email you within 24 hours to confirm your date. talk soon!</p>
+    </div>
   </div>
 
   <!-- SUCCESS -->
@@ -1037,6 +1157,73 @@
     .then(function(data) { state.clientIP = data.ip; })
     .catch(function() { state.clientIP = 'unavailable'; });
 
+  // ── FALL MINIS CONFIG ──
+  // to mark a slot as booked, add 'YYYY-MM-DD|H:MM AM/PM' e.g. '2026-09-27|4:00 PM'
+  var FALL_MINI_DATES = [
+    { date: '2026-09-27', display: 'Sunday, September 27, 2026', dow: 'sun', num: 'sep 27' },
+    { date: '2026-10-04', display: 'Sunday, October 4, 2026',    dow: 'sun', num: 'oct 4'  }
+  ];
+  var FALL_MINI_TIMES = ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'];
+  var FALL_MINI_BOOKED = []; // add booked slots here as sessions sell
+
+  function setStep2ForPackage(pkg) {
+    var calWrap  = document.getElementById('calendarWrap');
+    var miniWrap = document.getElementById('miniWrap');
+    var err2     = document.getElementById('err2');
+    var sub      = document.getElementById('step2Sub');
+    if (pkg === 'fallminis') {
+      calWrap.style.display  = 'none';
+      miniWrap.style.display = 'block';
+      sub.textContent  = 'pick a date and time slot that works best for you.';
+      err2.textContent = 'please select a date and time to continue.';
+      renderMiniDates();
+    } else {
+      calWrap.style.display  = 'block';
+      miniWrap.style.display = 'none';
+      sub.textContent  = 'select a date that works for you and i\'ll confirm availability within 24 hours.';
+      err2.textContent = 'please select a date to continue.';
+    }
+  }
+
+  function renderMiniDates() {
+    var list = document.getElementById('miniDatesList');
+    list.innerHTML = '';
+    FALL_MINI_DATES.forEach(function(d) {
+      var el = document.createElement('div');
+      el.className = 'mini-date-card' + (state.date === d.date ? ' selected' : '');
+      el.innerHTML = '<span class="mini-date-num">' + d.num + '</span>';
+      el.addEventListener('click', function() {
+        document.querySelectorAll('.mini-date-card').forEach(function(c) { c.classList.remove('selected'); });
+        el.classList.add('selected');
+        state.date = d.date;
+        state.dateDisplay = d.display;
+        state.time = null;
+        document.getElementById('err2').classList.remove('show');
+        renderMiniTimes(d.date);
+      });
+      list.appendChild(el);
+    });
+  }
+
+  function renderMiniTimes(dateStr) {
+    var wrap = document.getElementById('miniTimesList');
+    wrap.innerHTML = '<div class="mini-times-grid"></div>';
+    var grid = wrap.querySelector('.mini-times-grid');
+    FALL_MINI_TIMES.forEach(function(t) {
+      var key = dateStr + '|' + t;
+      var el = document.createElement('div');
+      el.className = 'mini-time-slot' + (FALL_MINI_BOOKED.indexOf(key) !== -1 ? ' booked' : '');
+      el.textContent = t;
+      el.addEventListener('click', function() {
+        document.querySelectorAll('.mini-time-slot').forEach(function(c) { c.classList.remove('selected'); });
+        el.classList.add('selected');
+        state.time = t;
+        document.getElementById('err2').classList.remove('show');
+      });
+      grid.appendChild(el);
+    });
+  }
+
   // ── PACKAGE CARDS ──
   document.querySelectorAll('.package-card').forEach(function(card) {
     card.addEventListener('click', function() {
@@ -1046,7 +1233,9 @@
       state.pkgName  = card.querySelector('.pkg-name').textContent;
       state.price    = parseFloat(card.dataset.price);
       state.duration = card.dataset.duration;
+      state.date = null; state.dateDisplay = null; state.time = null;
       document.getElementById('err1').classList.remove('show');
+      setStep2ForPackage(state.pkg);
     });
   });
 
@@ -1068,6 +1257,12 @@
 
   document.getElementById('toStep3').addEventListener('click', function() {
     if (!state.date) { document.getElementById('err2').classList.add('show'); return; }
+    if (state.pkg === 'fallminis') {
+      if (!state.time) { document.getElementById('err2').classList.add('show'); return; }
+      populateContract();
+      showStep('step4');
+      return;
+    }
     if (state.pkg === 'weddings' || state.pkg === 'events') {
       state.time = 'tbd';
       populateContract();
@@ -1153,17 +1348,51 @@
   document.getElementById('backTo1').addEventListener('click', function() { showStep('step1'); });
   document.getElementById('backTo2').addEventListener('click', function() { showStep('step2'); });
   document.getElementById('backTo3').addEventListener('click', function() {
-    if (state.pkg === 'weddings' || state.pkg === 'events') { showStep('step2'); } else { showStep('step3'); }
+    if (state.pkg === 'weddings' || state.pkg === 'events' || state.pkg === 'fallminis') { showStep('step2'); } else { showStep('step3'); }
   });
   document.getElementById('backTo4').addEventListener('click', function() { showStep('step4'); });
 
   // ── PAY BUTTON ──
+  document.getElementById('interacSentBtn').addEventListener('click', function() {
+    document.getElementById('interacBox').style.display = 'none';
+    document.getElementById('interacBtn').style.display = 'none';
+    document.getElementById('payBtn').style.display = 'none';
+    document.getElementById('interacConfirm').style.display = 'block';
+  });
+
+  document.getElementById('interacBtn').addEventListener('click', function() {
+    var box = document.getElementById('interacBox');
+    var deposit = '$' + (state.price / 2).toFixed(2) + ' CAD';
+    var msg = state.pkgName + ' deposit — ' + (state.dateDisplay || '') + (state.time && state.time !== 'tbd' ? ' · ' + state.time : '');
+    document.getElementById('interacAmount').textContent = deposit;
+    document.getElementById('interacMsg').textContent = msg;
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+
+    // also notify via formspree
+    fetch('https://formspree.io/f/mlgqjdlj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Interac Booking — ' + state.pkgName + ' · ' + state.dateDisplay,
+        _replyto: state.clientEmail,
+        'Payment method': 'Interac e-transfer',
+        package: state.pkgName,
+        date: state.dateDisplay,
+        time: state.time,
+        client: state.clientName,
+        email: state.clientEmail,
+        deposit: deposit
+      })
+    }).catch(function() {});
+  });
+
   document.getElementById('payBtn').addEventListener('click', function() {
     var stripeLinks = {
-      couples:  'https://buy.stripe.com/6oUbJ17sMg3Y8eu7PpbAs0a',
-      families: 'https://buy.stripe.com/7sY3cvfZi4lg8eu6LlbAs08',
-      events:   'https://buy.stripe.com/00w14n3cw6to1Q69XxbAs0c',
-      weddings: 'https://buy.stripe.com/8x200j4gAg3YgL0edNbAs0e'
+      couples:  'https://buy.stripe.com/YOUR_COUPLES_LINK',
+      families: 'https://buy.stripe.com/YOUR_FAMILIES_LINK',
+      events:   'https://buy.stripe.com/YOUR_EVENTS_LINK',
+      weddings: 'https://buy.stripe.com/YOUR_WEDDINGS_LINK',
+      fallminis:'https://buy.stripe.com/YOUR_FALLMINIS_LINK'
     };
     fetch('https://formspree.io/f/mlgqjdlj', {
       method: 'POST',
