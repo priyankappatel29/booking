@@ -596,6 +596,72 @@
   }
   .next-steps p:last-child { margin-bottom: 0; }
 
+  /* FAQ */
+  .faq-section {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,169,110,0.15);
+  }
+  .faq-title {
+    font-family: 'League Gothic', sans-serif;
+    font-size: clamp(36px, 6vw, 44px);
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .faq-item { border-bottom: 1px solid rgba(253,236,224,0.09); }
+  .faq-toggle { display: none; }
+  .faq-question {
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    padding: 18px 40px 18px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.25s;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'League Gothic', sans-serif;
+    font-size: 26px;
+    color: var(--gold);
+    transition: color 0.25s;
+  }
+  .faq-toggle:checked + .faq-question { color: var(--gold); }
+  .faq-toggle:checked + .faq-question::after { content: '−'; }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0;
+  }
+  .faq-toggle:checked ~ .faq-answer { max-height: 800px; padding: 0 0 24px; }
+  .faq-answer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--cream);
+    text-align: justify;
+  }
+  @media (max-width: 768px) {
+    .faq-question { font-size: 15px; padding: 16px 34px 16px 0; }
+    .faq-answer p { font-size: 13px; }
+  }
+
   .footer-note {
     text-align: center; font-style: italic; font-weight: 300;
     font-size: 13px; color: var(--cream); opacity: 0.35;
@@ -1051,6 +1117,83 @@
       <a href="https://priyankap.smugmug.com" class="btn-primary" style="margin-top:28px;">← Back to website</a>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="faq-title">FAQs</h2>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq1" class="faq-toggle">
+      <label for="faq1" class="faq-question">How far in advance should I book?</label>
+      <div class="faq-answer">
+        <p>For weddings, I recommend booking 6–12 months in advance, especially for peak season dates (May–October). For lifestyle sessions, 2–4 weeks notice is usually sufficient.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq2" class="faq-toggle">
+      <label for="faq2" class="faq-question">When will I receive my photos?</label>
+      <div class="faq-answer">
+        <p>Wedding galleries are delivered within 8 weeks, with a first-look gallery available for viewing within 1 week. Lifestyle and engagement sessions are ready within 3 weeks. All photos are fully edited and delivered through a private online gallery where you can download high-resolution files.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq3" class="faq-toggle">
+      <label for="faq3" class="faq-question">Do you travel outside of Calgary?</label>
+      <div class="faq-answer">
+        <p>Absolutely! I'm available for sessions throughout Alberta and beyond. I will work with you to make sure my travel and stay expenses are minimal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" class="faq-toggle">
+      <label for="faq4" class="faq-question">What if we're awkward in front of the camera?</label>
+      <div class="faq-answer">
+        <p>Most people feel this way! My approach is relaxed and natural. I'll guide you through everything. We'll focus on genuine moments and interactions rather than stiff poses.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq5" class="faq-toggle">
+      <label for="faq5" class="faq-question">Can we print our photos?</label>
+      <div class="faq-answer">
+        <p>Yes! You receive full print and distribution rights with your gallery.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq6" class="faq-toggle">
+      <label for="faq6" class="faq-question">What's your cancellation policy?</label>
+      <div class="faq-answer">
+        <p>The 50% deposit is non-refundable as it reserves your date exclusively. However, if you need to reschedule due to unforeseen circumstances, we can work together to find a new date based on availability.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq7" class="faq-toggle">
+      <label for="faq7" class="faq-question">What should we wear?</label>
+      <div class="faq-answer">
+        <p>Wear what makes you feel comfortable and confident. I recommend coordinating (not matching) and avoiding busy patterns. For lifestyle sessions, think timeless over trendy. I'm happy to provide style guidance once you book.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq8" class="faq-toggle">
+      <label for="faq8" class="faq-question">What happens if it rains or snows?</label>
+      <div class="faq-answer">
+        <p>For outdoor sessions, we'll monitor the forecast and reschedule if needed. A little light rain or snow or overcast skies can actually create beautiful, moody photos.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq9" class="faq-toggle">
+      <label for="faq9" class="faq-question">Do you require a deposit?</label>
+      <div class="faq-answer">
+        <p>Yes, a 50% deposit is required to reserve your date. The remaining balance is due two weeks before your session or wedding date. I accept payments via Stripe, Interac e-transfer, and USDC.</p>
+      </div>
+    </div>
+  </section>
 
   <p class="footer-note">Questions? <a href="mailto:info@priyanka.photos">info@priyanka.photos</a></p>
 </main>
