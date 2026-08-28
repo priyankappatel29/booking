@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>book a photo session - priyanka.photos</title>
 <meta property="og:description" content="couples, family, events & weddings. based in calgary, available beyond." />
-<meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark_Mode.png" />
+<meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark Mode.png" />
 <meta property="og:image:width" content="1080" />
 <meta property="og:image:height" content="1080" />
 <meta property="og:url" content="https://priyankappatel29.github.io/booking/" />
@@ -653,6 +653,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 14px;
     font-weight: 300;
+    font-style: italic;
     line-height: 1.8;
     color: var(--cream);
     text-align: justify;
@@ -662,14 +663,47 @@
     .faq-answer p { font-size: 13px; }
   }
 
+  /* SOCIAL LINKS */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 48px;
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+  }
+  .social-icon svg { width: 19px; height: 19px; display: block; }
+  .social-icon:hover {
+    background: var(--navy);
+    color: var(--cream);
+    box-shadow: inset 0 0 0 1px var(--cream);
+    transform: translateY(-2px);
+  }
+
   .footer-note {
     text-align: center; font-style: italic; font-weight: 300;
-    font-size: 13px; color: var(--cream); opacity: 0.35;
-    margin-top: 24px; 
-    padding-top: 24px;
-    border-top: 1px solid rgba(253,236,224,0.07);
+    font-size: 13px; color: var(--cream);
+    margin-top: 20px; 
+    padding-top: 20px;
   }
-  .footer-note a { color: var(--gold); opacity: 1; text-decoration: none; }
+  .footer-note a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(253,236,224,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.25s;
+  }
+  .footer-note a:hover { border-bottom-color: var(--cream); }
 
   .error-msg { color: #e07a7a; font-size: 13px; font-style: italic; font-weight: 300; margin-top: 8px; display: none; }
   .error-msg.show { display: block; }
@@ -1195,7 +1229,24 @@
     </div>
   </section>
 
-  <p class="footer-note">Questions? <a href="mailto:info@priyanka.photos">info@priyanka.photos</a></p>
+  <div class="social-links">
+    <a href="https://www.priyanka.photos" target="_blank" rel="noopener" class="social-icon" aria-label="website">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/priyankap.photography" target="_blank" rel="noopener" class="social-icon" aria-label="instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+      </svg>
+    </a>
+  </div>
+
+  <p class="footer-note">Questions? Send a DM to <a href="https://www.instagram.com/priyankap.photography" target="_blank" rel="noopener">@priyankap.photography</a> on Instagram</p>
 </main>
 
 <script>
