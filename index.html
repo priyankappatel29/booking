@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>book a photo session - priyanka.photos</title>
 <meta property="og:description" content="couples, family, events & weddings. based in calgary, available beyond." />
-<meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark Mode.png" />
+<meta property="og:image" content="https://priyankappatel29.github.io/booking/Priyanka_Dark_Mode.png" />
 <meta property="og:image:width" content="1080" />
 <meta property="og:image:height" content="1080" />
 <meta property="og:url" content="https://priyankappatel29.github.io/booking/" />
@@ -1355,6 +1355,8 @@
   // to mark a slot as booked, add 'YYYY-MM-DD|H:MM AM/PM' e.g. '2026-09-27|4:00 PM'
   var FALL_MINI_DATES = [
     { date: '2026-09-27', display: 'Sunday, September 27, 2026', dow: 'sun', num: 'september 27, 2026' },
+{ date: '2026-10-01', display: 'Thursday, October 1, 2026',    dow: 'sun', num: 'october 1, 2026',
+	times: ['6:00 PM'] },
     { date: '2026-10-03', display: 'Saturday, October 3, 2026',    dow: 'sun', num: 'october 3, 2026'  }
   ];
   var FALL_MINI_TIMES = ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'];
@@ -1400,23 +1402,27 @@
   }
 
   function renderMiniTimes(dateStr) {
-    var wrap = document.getElementById('miniTimesList');
-    wrap.innerHTML = '<div class="mini-times-grid"></div>';
-    var grid = wrap.querySelector('.mini-times-grid');
-    FALL_MINI_TIMES.forEach(function(t) {
-      var key = dateStr + '|' + t;
-      var el = document.createElement('div');
-      el.className = 'mini-time-slot' + (FALL_MINI_BOOKED.indexOf(key) !== -1 ? ' booked' : '');
-      el.textContent = t;
-      el.addEventListener('click', function() {
-        document.querySelectorAll('.mini-time-slot').forEach(function(c) { c.classList.remove('selected'); });
-        el.classList.add('selected');
-        state.time = t;
-        document.getElementById('err2').classList.remove('show');
-      });
-      grid.appendChild(el);
+  var wrap = document.getElementById('miniTimesList');
+  wrap.innerHTML = '<div class="mini-times-grid"></div>';
+  var grid = wrap.querySelector('.mini-times-grid');
+
+  var dateObj = FALL_MINI_DATES.filter(function(d) { return d.date === dateStr; })[0];
+  var times = (dateObj && dateObj.times) ? dateObj.times : FALL_MINI_TIMES;
+
+  times.forEach(function(t) {
+    var key = dateStr + '|' + t;
+    var el = document.createElement('div');
+    el.className = 'mini-time-slot' + (FALL_MINI_BOOKED.indexOf(key) !== -1 ? ' booked' : '');
+    el.textContent = t;
+    el.addEventListener('click', function() {
+      document.querySelectorAll('.mini-time-slot').forEach(function(c) { c.classList.remove('selected'); });
+      el.classList.add('selected');
+      state.time = t;
+      document.getElementById('err2').classList.remove('show');
     });
-  }
+    grid.appendChild(el);
+  });
+}
 
   // ── PACKAGE CARDS ──
   document.querySelectorAll('.package-card').forEach(function(card) {
